@@ -23,14 +23,15 @@ public class MainActivity extends AppCompatActivity {
     EditText passwordEditText;
     Button loginButton;
     ProgressDialog progressDialog;
-    private DatabaseReference mDatabase;
+    DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
-        Log.d("FIREBASE", mDatabase.toString());
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("users");
+        Log.d("FIREBASE",mDatabase.toString());
 
         emailEditText = (EditText)findViewById(R.id.emailEditText);
         passwordEditText = (EditText)findViewById(R.id.passwordEditText);

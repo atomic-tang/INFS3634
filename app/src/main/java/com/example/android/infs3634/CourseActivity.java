@@ -3,6 +3,7 @@ package com.example.android.infs3634;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
@@ -17,13 +18,13 @@ public class CourseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course);
 
-        Bundle extras = getIntent().getExtras();
-        if (extras == null) {
+        Course course = (Course) getIntent().getSerializableExtra("Course");
+        if (course != null) {
+            getSupportActionBar().setTitle(course.getCourseId());
 
-        } else {
-            String value = extras.getString("Course ID");
-            if (value != null) {
-                getSupportActionBar().setTitle(value);
+            for (String id: course.getLessonIds()) {
+                Log.d("Acitiviteeeeee", id);
+                // Load Week Informations
             }
         }
 

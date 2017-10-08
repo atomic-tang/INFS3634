@@ -1,44 +1,50 @@
 package com.example.android.infs3634;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+
 public class HomeActivity extends AppCompatActivity {
 
     ListView listView;
+    ArrayList<Course> courses = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        listView = findViewById(R.id.courseListView);
         getSupportActionBar().setTitle("Home");
-
         final HomeActivity activity = this;
 
-        Course course1 = new Course("Introduction to Java", "INFS1609");
-        Course course2 = new Course("Advanced Java", "INFS2605");
-        Course course3 = new Course("Andriod Development", "INFS3634");
+        DataService.instance.getCourses(this, this);
 
-        final Course[] courses = {course1, course2, course3};
         ListAdapter adapter = new CourseAdaptor(this, courses);
-        listView = (ListView) findViewById(R.id.courseListView);
+
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String id = courses[i].getCourseId();
+                Course course = courses.get(i);
                 Intent intent = new Intent(activity, CourseActivity.class);
-                intent.putExtra("Course ID", id);
+                intent.putExtra("Course", course);
                 startActivity(intent);
             }
         });
 
     }
+
 }

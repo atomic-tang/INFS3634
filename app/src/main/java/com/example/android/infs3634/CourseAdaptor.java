@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 /**
  * Created by PakinLertthamanon on 9/26/17.
  */
@@ -16,7 +18,7 @@ import android.widget.TextView;
 
 public class CourseAdaptor extends ArrayAdapter<Course> {
 
-    CourseAdaptor(Context context, Course[] courses) {
+    CourseAdaptor(Context context, ArrayList<Course> courses) {
         super(context, R.layout.row_course, courses);
     }
 
@@ -27,8 +29,8 @@ public class CourseAdaptor extends ArrayAdapter<Course> {
         View courseView = inflater.inflate(R.layout.row_course, parent, false);
 
         Course course = getItem(position);
-        TextView titleTextView = (TextView) courseView.findViewById(R.id.courseTitleTextView);
-        TextView codeTextView = (TextView) courseView.findViewById(R.id.courseCodeTextView);
+        TextView titleTextView = courseView.findViewById(R.id.courseTitleTextView);
+        TextView codeTextView = courseView.findViewById(R.id.courseCodeTextView);
 
         titleTextView.setText(course.getCourseTitle());
         codeTextView.setText(course.getCourseId());

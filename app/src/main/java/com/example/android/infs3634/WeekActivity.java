@@ -19,6 +19,16 @@ public class WeekActivity extends AppCompatActivity {
         setContentView(R.layout.activity_week);
         final WeekActivity activity = this;
 
+        Bundle extras = getIntent().getExtras();
+        if (extras == null) {
+
+        } else {
+            String value = extras.getString("Week ID");
+            if (value != null) {
+                getSupportActionBar().setTitle("Week " + value);
+            }
+        }
+
         String[] ids = {"Introduction", "Course Outline", "Quiz"};
         ListAdapter adapter = new TaskAdapter(this, ids);
         listView = (ListView)findViewById(R.id.taskListView);

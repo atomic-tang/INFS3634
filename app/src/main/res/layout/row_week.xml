@@ -8,16 +8,18 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="match_parent"
-        android:layout_height="88dp"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginLeft="24dp"
         android:layout_marginRight="24dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/lightColor"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!--app:srcCompat="@color/common_google_signin_btn_text_dark_default"-->
 
@@ -30,7 +32,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageView5"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="16dp"
-        app:layout_constraintLeft_toLeftOf="@+id/imageView5" />
+        app:layout_constraintLeft_toLeftOf="@+id/imageView5"
+        android:layout_marginStart="16dp" />
 
     <!--app:srcCompat="@drawable/common_google_signin_btn_icon_light"-->
 
@@ -45,18 +48,24 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toRightOf="@+id/weekImageView"
         app:layout_constraintRight_toRightOf="@+id/imageView5"
-        app:layout_constraintTop_toBottomOf="@+id/weekTitleTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/weekTitleTextView"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <TextView
         android:id="@+id/weekTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Week 1: Introduction"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="@+id/imageView5"
-        app:layout_constraintLeft_toRightOf="@+id/weekImageView"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="Week 1: Introduction"
+        android:textSize="18sp"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintTop_toTopOf="@+id/weekImageView"
-        android:layout_marginTop="0dp" />
+        app:layout_constraintLeft_toRightOf="@+id/weekImageView"
+        app:layout_constraintRight_toRightOf="@+id/imageView5"
+        app:layout_constraintTop_toTopOf="@+id/imageView5" />
 </android.support.constraint.ConstraintLayout>

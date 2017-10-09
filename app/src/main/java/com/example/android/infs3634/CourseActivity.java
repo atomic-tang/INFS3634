@@ -9,31 +9,26 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 public class CourseActivity extends AppCompatActivity {
 
     ListView listView;
+    ArrayList<Week> weeks = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course);
+        final CourseActivity activity = this;
 
         Course course = (Course) getIntent().getSerializableExtra("Course");
         if (course != null) {
             getSupportActionBar().setTitle(course.getCourseId());
 
-            for (String id: course.getLessonIds()) {
-                Log.d("Acitiviteeeeee", id);
-                // Load Week Informations
-            }
+            DataService.instance.getWeeks(this, this, course.getLessonIds());
         }
 
-        final CourseActivity activity = this;
-        Week week1 = new Week(1, "Introduction", "Introduction to Andriod");
-        Week week2 = new Week(2, "Life Cycle", "Introduction to Life Cycle");
-        Week week3 = new Week(3, "Activity", "Introduction to Activity");
-
-        final Week[] weeks = {week1, week2, week3};
         ListAdapter adapter = new WeekAdaptor(this, weeks);
         listView = (ListView) findViewById(R.id.weekListView);
         listView.setAdapter(adapter);
@@ -41,7 +36,7 @@ public class CourseActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String id = "" + weeks[i].getWeekNumber();
+                String id = "" + weeks.get(i).getWeekNumber();
                 Intent intent = new Intent(activity, WeekActivity.class);
                 intent.putExtra("Week ID", id);
                 startActivity(intent);

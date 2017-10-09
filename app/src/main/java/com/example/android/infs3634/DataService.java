@@ -39,22 +39,24 @@ public class DataService {
         return getBaseReference().child("users").child(getStudentId());
     }
 
+    public DatabaseReference getLessonRef() {
+        return getBaseReference().child("lessons");
+    }
+
     public void createUserDetails(String firstName, String lastName) {
         getCurrentUserRef().child("firstName").setValue(firstName);
         getCurrentUserRef().child("lastName").setValue(lastName);
     }
 
     public void getCourses(final Context context, final HomeActivity activity) {
-        final ArrayList<Course> courses = new ArrayList<>();
         getBaseReference().child("courses").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snap: dataSnapshot.getChildren()) {
-                    Course course = new Course(snap.getKey(), snap.child("name").getValue().toString(), snap);
-                    courses.add(course);
+                    Course course = new Course(snap);
+                    activity.courses.add(course);
                 }
-                activity.courses = courses;
-                ListAdapter adapter = new CourseAdaptor(activity, courses);
+                ListAdapter adapter = new CourseAdaptor(activity, activity.courses);
                 activity.listView.setAdapter(adapter);
             }
 
@@ -65,8 +67,27 @@ public class DataService {
         });
     }
 
-    public void getWeeks(Context context, CourseActivity activity, ArrayList<String> lessonIds) {
-        //TODO: Load Weeks
+    public void getWeeks(final Context context, final CourseActivity activity, final ArrayList<String> weekIds) {
+        for (int index = 0; index < weekIds.size(); index++) {
+            final int finalIndex = index;
+            getLessonRef().child(weekIds.get(index)).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Week week = new Week(dataSnapshot);
+                    activity.weeks.add(week);
+                    if (finalIndex == weekIds.size() - 1) {
+                        ListAdapter adapter = new WeekAdaptor(activity, activity.weeks);
+                        activity.listView.setAdapter(adapter);
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Toast.makeText(context, "Error Loading weeks", Toast.LENGTH_SHORT);
+                }
+            });
+        }
+
     }
 
 }

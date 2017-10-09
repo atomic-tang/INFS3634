@@ -10,13 +10,15 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 /**
  * Created by PakinLertthamanon on 9/26/17.
  */
 
 public class WeekAdaptor extends ArrayAdapter<Week> {
 
-    public WeekAdaptor(Context context, Week[] weeks) {
+    public WeekAdaptor(Context context, ArrayList<Week> weeks) {
         super(context, R.layout.row_week,weeks);
     }
 

@@ -41,9 +41,7 @@ public class Course implements Serializable {
                 strings.add(lessonKey);
             }
         }
-
         lessonIds = strings;
-
     }
 
     Course(String id, String title, ArrayList<String> ids) {

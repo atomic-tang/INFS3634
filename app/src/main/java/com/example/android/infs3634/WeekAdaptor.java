@@ -34,7 +34,7 @@ public class WeekAdaptor extends ArrayAdapter<Week> {
         TextView descriptionTextView = (TextView) weekView.findViewById(R.id.weekDescriptionTextView);
 
         //set Image
-        titleTextView.setText("Week" + week.getWeekNumber() + ": " + week.getWeekTopic());
+        titleTextView.setText("Week " + week.getWeekNumber() + ": " + week.getWeekTopic());
         descriptionTextView.setText(week.getWeekDetails());
 
         return weekView;

@@ -30,15 +30,15 @@ public class CourseActivity extends AppCompatActivity {
         }
 
         ListAdapter adapter = new WeekAdaptor(this, weeks);
-        listView = (ListView) findViewById(R.id.weekListView);
+        listView = findViewById(R.id.weekListView);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String id = "" + weeks.get(i).getWeekNumber();
+                Week week = weeks.get(i);
                 Intent intent = new Intent(activity, WeekActivity.class);
-                intent.putExtra("Week ID", id);
+                intent.putExtra("Week", week);
                 startActivity(intent);
             }
         });

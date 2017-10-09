@@ -4,13 +4,14 @@ import android.util.Log;
 
 import com.google.firebase.database.DataSnapshot;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by PakinLertthamanon on 9/26/17.
  */
 
-public class Week {
+public class Week implements Serializable {
 
     private String weekId;
     private String weekNumber;

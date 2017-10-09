@@ -43,6 +43,10 @@ public class DataService {
         return getBaseReference().child("lessons");
     }
 
+    public DatabaseReference getTaskRef() {
+        return  getBaseReference().child("activities");
+    }
+
     public void createUserDetails(String firstName, String lastName) {
         getCurrentUserRef().child("firstName").setValue(firstName);
         getCurrentUserRef().child("lastName").setValue(lastName);
@@ -89,5 +93,35 @@ public class DataService {
         }
 
     }
+
+    public void getTask(final Context context, final WeekActivity activity, final ArrayList<String> taskIds) {
+        for (int index = 0; index < taskIds.size(); index++) {
+            final int finalIndex = index;
+            getTaskRef().child(taskIds.get(index)).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    String type = dataSnapshot.child("type").getValue().toString();
+                    if (type.equals("video")) {
+                        VideoClass video = new VideoClass(dataSnapshot);
+                        activity.tasks.add(video);
+                        Log.d("Videoooo", "" + activity.tasks.size());
+                    } else {
+                        Quiz quiz = new Quiz(dataSnapshot);
+                        activity.tasks.add(quiz);
+                    }
+                    if (finalIndex == taskIds.size() - 1) {
+                        ListAdapter adapter = new TaskAdapter(activity, activity.tasks);
+                        activity.listView.setAdapter(adapter);
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Toast.makeText(context, "Error Loading tasks", Toast.LENGTH_SHORT);
+                }
+            });
+        }
+    }
+
 
 }

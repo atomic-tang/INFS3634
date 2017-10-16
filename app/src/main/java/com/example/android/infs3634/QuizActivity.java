@@ -6,7 +6,11 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class QuizActivity extends AppCompatActivity {
+
+    ArrayList<Question> questions = new ArrayList<>();
 
     TextView lessonTextView;
     TextView progressTextView;

@@ -1,9 +1,5 @@
 package com.example.android.infs3634;
 
-/**
- * Created by PakinLertthamanon on 10/12/17.
- */
-
 public enum Lesson {
 
     INTRO_TO_JAVA, ELEMENTARY_PROGRAMMING, SELECTIONS, LOOPS, METHODS, ARRAYS, OBJECTS,

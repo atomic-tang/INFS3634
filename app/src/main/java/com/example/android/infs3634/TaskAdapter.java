@@ -13,10 +13,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- * Created by PakinLertthamanon on 9/26/17.
- */
-
 public class TaskAdapter extends ArrayAdapter<Task> {
 
     public TaskAdapter(Context context, ArrayList<Task> tasks) {

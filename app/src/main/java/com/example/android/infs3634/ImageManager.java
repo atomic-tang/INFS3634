@@ -2,15 +2,11 @@ package com.example.android.infs3634;
 
 import android.widget.ImageView;
 
-/**
- * Created by PakinLertthamanon on 10/12/17.
- */
-
 public class ImageManager {
 
     static ImageManager manager = new ImageManager();
 
-    public void setImageToImageView(Lesson lesson , ImageView imageView) {
+    public void setImageToImageView(Lesson lesson, ImageView imageView) {
         switch (lesson) {
             case INTRO_TO_JAVA:
                 imageView.setBackgroundResource(R.drawable.intro_to_java);

@@ -12,10 +12,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- * Created by PakinLertthamanon on 9/26/17.
- */
-
 public class WeekAdaptor extends ArrayAdapter<Week> {
 
     public WeekAdaptor(Context context, ArrayList<Week> weeks) {
@@ -38,6 +34,5 @@ public class WeekAdaptor extends ArrayAdapter<Week> {
         descriptionTextView.setText(week.getWeekDetails());
 
         return weekView;
-
     }
 }

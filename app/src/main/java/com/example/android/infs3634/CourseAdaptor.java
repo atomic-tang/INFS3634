@@ -11,11 +11,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- * Created by PakinLertthamanon on 9/26/17.
- */
-
-
 public class CourseAdaptor extends ArrayAdapter<Course> {
 
     CourseAdaptor(Context context, ArrayList<Course> courses) {

@@ -1,17 +1,12 @@
 package com.example.android.infs3634;
 
-import com.google.firebase.database.DataSnapshot;
+import java.io.Serializable;
 
-/**
- * Created by PakinLertthamanon on 10/9/17.
- */
-
-public class Task {
+public class Task implements Serializable {
 
     protected String taskKey;
     protected String title;
     protected String type;
-    protected DataSnapshot snapshot;
 
     public String getTitle() {
         return title;
@@ -25,7 +20,4 @@ public class Task {
         return type;
     }
 
-    public DataSnapshot getSnapshot() {
-        return snapshot;
-    }
 }

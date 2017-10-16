@@ -1,7 +1,6 @@
 package com.example.android.infs3634;
 
 import android.content.Context;
-import android.util.Log;
 import android.widget.ListAdapter;
 import android.widget.Toast;
 
@@ -14,10 +13,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-
-/**
- * Created by PakinLertthamanon on 10/8/17.
- */
 
 public class DataService {
 
@@ -45,6 +40,10 @@ public class DataService {
 
     public DatabaseReference getTaskRef() {
         return  getBaseReference().child("activities");
+    }
+
+    public DatabaseReference getQuestionRef() {
+        return getBaseReference().child("questions");
     }
 
     public void createUserDetails(String firstName, String lastName) {
@@ -102,9 +101,8 @@ public class DataService {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     String type = dataSnapshot.child("type").getValue().toString();
                     if (type.equals("video")) {
-                        VideoClass video = new VideoClass(dataSnapshot);
+                        Video video = new Video(dataSnapshot);
                         activity.tasks.add(video);
-                        Log.d("Videoooo", "" + activity.tasks.size());
                     } else {
                         Quiz quiz = new Quiz(dataSnapshot);
                         activity.tasks.add(quiz);
@@ -113,6 +111,28 @@ public class DataService {
                         ListAdapter adapter = new TaskAdapter(activity, activity.tasks);
                         activity.listView.setAdapter(adapter);
                     }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Toast.makeText(context, "Error Loading tasks", Toast.LENGTH_SHORT);
+                }
+            });
+        }
+    }
+
+    public void getQuestion(final Context context, final QuizActivity activity, final ArrayList<String> questionIds) {
+        for (int index = 0; index < questionIds.size(); index++) {
+            final int finalIndex = index;
+            getQuestionRef().child(questionIds.get(index)).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Question question = new Question(dataSnapshot);
+                    activity.questions.add(question);
+//                    if (finalIndex == questionIds.size() - 1) {
+//                        ListAdapter adapter = new WeekAdaptor(activity, activity.questions);
+//                        activity.listView.setAdapter(adapter);
+//                    }
                 }
 
                 @Override

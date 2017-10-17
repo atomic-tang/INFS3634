@@ -2,4 +2,6 @@
     <string name="app_name">INFS3634</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_lesson">LessonActivity</string>
+    <string name="next">next</string>
+    <string name="redo">redo quiz</string>
 </resources>

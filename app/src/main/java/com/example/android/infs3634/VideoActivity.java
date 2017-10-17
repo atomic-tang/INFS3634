@@ -19,6 +19,7 @@ public class VideoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
+        getSupportActionBar().hide();
 
         final VideoActivity activity = this;
 
@@ -29,9 +30,9 @@ public class VideoActivity extends AppCompatActivity {
         TextView mTitle = findViewById(R.id.title);
         TextView mDescription = findViewById(R.id.description);
 
-        ArrayList<Task> tasks = (ArrayList<Task>) getIntent().getSerializableExtra("Tasks");
-        int taskIndex = (int) getIntent().getSerializableExtra("Task Index") + 1;
-        int totalTasks = (int) getIntent().getSerializableExtra("Total Tasks");
+        final ArrayList<Task> tasks = (ArrayList<Task>) getIntent().getSerializableExtra("Tasks");
+        final int taskIndex = (int) getIntent().getSerializableExtra("Task Index") + 1;
+        final int totalTasks = (int) getIntent().getSerializableExtra("Total Tasks");
         int progress = Math.round(100 * taskIndex / totalTasks);
         Video video = (Video) tasks.get(0);
         Uri videoUri = Uri.parse(video.getUrl());
@@ -42,29 +43,37 @@ public class VideoActivity extends AppCompatActivity {
         mDescription.setText(video.getDescription());
 
         MediaController mediaController = new MediaController(this);
+        mediaController.setAnchorView(mVideoView);
         mVideoView.setMediaController(mediaController);
         mVideoView.setVideoURI(videoUri);
         mVideoView.requestFocus();
-        mVideoView.start();
 
         tasks.remove(0);
-        final ArrayList<Task> newTasks = tasks;
+        if (tasks.size() > 0) {
+            mNextBtn.setText("next");
+        } else {
+            mNextBtn.setText("finish lesson");
+        }
 
         mNextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (newTasks.size() > 0) {
-                    if (newTasks.get(0).getType().equalsIgnoreCase("quiz")) {
+                if (tasks.size() > 0) {
+                    if (tasks.get(0).getType().equalsIgnoreCase("quiz")) {
                         Intent intent = new Intent(activity, QuizActivity.class);
-                        intent.putExtra("Tasks", newTasks);
+                        intent.putExtra("Tasks", tasks);
+                        intent.putExtra("Task Index", taskIndex);
+                        intent.putExtra("Total Tasks", totalTasks);
                         startActivity(intent);
-                    } else if (newTasks.get(0).getType().equalsIgnoreCase("video")) {
+                    } else if (tasks.get(0).getType().equalsIgnoreCase("video")) {
                         Intent intent = new Intent(activity, VideoActivity.class);
-                        intent.putExtra("Tasks", newTasks);
+                        intent.putExtra("Tasks", tasks);
+                        intent.putExtra("Task Index", taskIndex);
+                        intent.putExtra("Total Tasks", totalTasks);
                         startActivity(intent);
                     }
                 } else {
-
+                    // Results / Reward badge activity
                 }
             }
         });

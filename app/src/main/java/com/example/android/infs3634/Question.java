@@ -12,12 +12,33 @@ public class Question {
     private int answer;
 
     Question (DataSnapshot snapshot) {
-        questionId = snapshot.getKey().toString();
-        question = snapshot.child("question").getValue().toString();
-        for (DataSnapshot snap: snapshot.child("options").getChildren()) {
-            options.add(snap.getValue().toString());
+        String questionKey = snapshot.getKey().toString();
+        if (questionKey != null) {
+            questionId = questionKey;
+        } else {
+            questionId = "";
         }
-        answer = (int) snapshot.child("answer").getValue();
+
+        String questionText = snapshot.child("question").getValue().toString();
+        if (questionText != null) {
+            question = snapshot.child("question").getValue().toString();
+        } else {
+            question = "";
+        }
+
+        ArrayList<String> strings = new ArrayList<>();
+        for (DataSnapshot snap: snapshot.child("options").getChildren()) {
+            strings.add(snap.getValue().toString());
+        }
+        options = strings;
+
+        String answerValue = snapshot.child("answer").getValue().toString();
+        if (answerValue != null) {
+            answer = Integer.parseInt(answerValue);
+        } else {
+            answer = 0;
+        }
+
     }
 
     public String getQuestionKey() {

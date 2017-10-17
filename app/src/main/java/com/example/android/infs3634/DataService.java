@@ -1,6 +1,7 @@
 package com.example.android.infs3634;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.ListAdapter;
 import android.widget.Toast;
 
@@ -129,10 +130,9 @@ public class DataService {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     Question question = new Question(dataSnapshot);
                     activity.questions.add(question);
-//                    if (finalIndex == questionIds.size() - 1) {
-//                        ListAdapter adapter = new WeekAdaptor(activity, activity.questions);
-//                        activity.listView.setAdapter(adapter);
-//                    }
+                    if (finalIndex == questionIds.size() - 1) {
+                        activity.renderQuiz();
+                    }
                 }
 
                 @Override

@@ -1,6 +1,7 @@
 package com.example.android.infs3634;
 
 import android.content.Context;
+import android.support.constraint.ConstraintLayout;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
@@ -146,6 +147,26 @@ public class DataService {
 
     public void completeLesson(String key) {
         getCurrentUserRef().child("completedWeeks").child(key).setValue("true");
+    }
+
+    public boolean checkCompleteLess(final String key, final ConstraintLayout layout) {
+        boolean complete = false;
+        getCurrentUserRef().child("completedWeeks").child(key).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String snapString = dataSnapshot.getValue() + "";
+
+                if (snapString.equals("true")) {
+                    layout.setAlpha(0.5f);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                //
+            }
+        });
+        return complete;
     }
 
     public boolean checkCompleteLess(final String key, final ImageView imageView) {

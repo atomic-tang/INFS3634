@@ -25,11 +25,11 @@ public class WeekAdaptor extends ArrayAdapter<Week> {
         View weekView = inflater.inflate(R.layout.row_week, parent, false);
 
         Week week = getItem(position);
-        ImageView imageView = (ImageView) weekView.findViewById(R.id.weekImageView);
-        TextView titleTextView = (TextView) weekView.findViewById(R.id.weekTitleTextView);
-        TextView descriptionTextView = (TextView) weekView.findViewById(R.id.weekDescriptionTextView);
+        ImageView imageView = weekView.findViewById(R.id.weekImageView);
+        TextView titleTextView = weekView.findViewById(R.id.weekTitleTextView);
+        TextView descriptionTextView = weekView.findViewById(R.id.weekDescriptionTextView);
 
-        //set Image
+        ImageManager.manager.setIconImageView(week.getWeekId(), imageView);
         titleTextView.setText("Week " + week.getWeekNumber() + ": " + week.getWeekTopic());
         descriptionTextView.setText(week.getWeekDetails());
 

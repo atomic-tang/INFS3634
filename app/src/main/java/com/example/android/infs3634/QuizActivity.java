@@ -28,6 +28,7 @@ public class QuizActivity extends AppCompatActivity {
     ProgressBar mProgressBar;
     TextView mQuestionNumberText;
     TextView mQuestionText;
+    TextView lessonTitle;
     Button mBtnA;
     Button mBtnB;
     Button mBtnC;
@@ -37,6 +38,7 @@ public class QuizActivity extends AppCompatActivity {
     int taskIndex;
     int totalTasks;
     ArrayList<Task> tasks;
+    Week week;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,8 @@ public class QuizActivity extends AppCompatActivity {
         tasks = (ArrayList<Task>) getIntent().getSerializableExtra("Tasks");
         taskIndex = (int) getIntent().getSerializableExtra("Task Index") + 1;
         totalTasks = (int) getIntent().getSerializableExtra("Total Tasks");
+        week = (Week) getIntent().getSerializableExtra("Week");
+        mLessonTitle.setText("Week " + week.getWeekNumber() + ": " + week.getWeekTopic());
 
         int progress = Math.round(100 * taskIndex / totalTasks);
         Quiz quiz = (Quiz) tasks.get(0);
@@ -223,21 +227,21 @@ public class QuizActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                         if (tasks.size() > 0) {
+                            Intent intent;
                             if (tasks.get(0).getType().equalsIgnoreCase("quiz")) {
-                                Intent intent = new Intent(QuizActivity.this, QuizActivity.class);
-                                intent.putExtra("Tasks", tasks);
-                                intent.putExtra("Task Index", taskIndex);
-                                intent.putExtra("Total Tasks", totalTasks);
-                                startActivity(intent);
-                            } else if (tasks.get(0).getType().equalsIgnoreCase("video")) {
-                                Intent intent = new Intent(QuizActivity.this, VideoActivity.class);
-                                intent.putExtra("Tasks", tasks);
-                                intent.putExtra("Task Index", taskIndex);
-                                intent.putExtra("Total Tasks", totalTasks);
-                                startActivity(intent);
+                                intent = new Intent(QuizActivity.this, QuizActivity.class);
+                            } else {
+                                intent = new Intent(QuizActivity.this, VideoActivity.class);
                             }
+                            intent.putExtra("Tasks", tasks);
+                            intent.putExtra("Task Index", taskIndex);
+                            intent.putExtra("Total Tasks", totalTasks);
+                            intent.putExtra("Week", week);
+                            startActivity(intent);
                         } else {
-                            // Results / Reward badge activity
+                            Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
+                            intent.putExtra("Week", week);
+                            startActivity(intent);
                         }
                     }
                 });
@@ -258,6 +262,7 @@ public class QuizActivity extends AppCompatActivity {
                                 intent.putExtra("Tasks", tasks);
                                 intent.putExtra("Task Index", taskIndex - 1);
                                 intent.putExtra("Total Tasks", totalTasks);
+                                intent.putExtra("Week", week);
                                 dialog.cancel();
                                 finish();
                                 startActivity(intent);

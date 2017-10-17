@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.MediaController;
@@ -11,9 +12,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class VideoActivity extends AppCompatActivity {
+
+    Week week;
+    TextView titleTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +35,15 @@ public class VideoActivity extends AppCompatActivity {
         ProgressBar mProgressBar = findViewById(R.id.progressBar2);
         TextView mTitle = findViewById(R.id.title);
         TextView mDescription = findViewById(R.id.description);
+        titleTextView = findViewById(R.id.videoWeekTitle);
 
         final ArrayList<Task> tasks = (ArrayList<Task>) getIntent().getSerializableExtra("Tasks");
         final int taskIndex = (int) getIntent().getSerializableExtra("Task Index") + 1;
         final int totalTasks = (int) getIntent().getSerializableExtra("Total Tasks");
+        week = (Week) getIntent().getSerializableExtra("Week");
+
+        titleTextView.setText("Week " + week.getWeekNumber() + ": " + week.getWeekTopic());
+
         int progress = Math.round(100 * taskIndex / totalTasks);
         Video video = (Video) tasks.get(0);
         Uri videoUri = Uri.parse(video.getUrl());
@@ -50,30 +61,30 @@ public class VideoActivity extends AppCompatActivity {
 
         tasks.remove(0);
         if (tasks.size() > 0) {
-            mNextBtn.setText("next");
+            mNextBtn.setText("Next");
         } else {
-            mNextBtn.setText("finish lesson");
+            mNextBtn.setText("Finish Lesson");
         }
 
         mNextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (tasks.size() > 0) {
+                    Intent intent;
                     if (tasks.get(0).getType().equalsIgnoreCase("quiz")) {
-                        Intent intent = new Intent(activity, QuizActivity.class);
-                        intent.putExtra("Tasks", tasks);
-                        intent.putExtra("Task Index", taskIndex);
-                        intent.putExtra("Total Tasks", totalTasks);
-                        startActivity(intent);
-                    } else if (tasks.get(0).getType().equalsIgnoreCase("video")) {
-                        Intent intent = new Intent(activity, VideoActivity.class);
-                        intent.putExtra("Tasks", tasks);
-                        intent.putExtra("Task Index", taskIndex);
-                        intent.putExtra("Total Tasks", totalTasks);
-                        startActivity(intent);
+                        intent = new Intent(activity, QuizActivity.class);
+                    } else  {
+                        intent = new Intent(activity, VideoActivity.class);
                     }
+                    intent.putExtra("Tasks", tasks);
+                    intent.putExtra("Task Index", taskIndex);
+                    intent.putExtra("Total Tasks", totalTasks);
+                    intent.putExtra("Week", week);
+                    startActivity(intent);
                 } else {
-                    // Results / Reward badge activity
+                    Intent intent = new Intent(activity, ResultActivity.class);
+                    intent.putExtra("Week", week);
+                    startActivity(intent);
                 }
             }
         });

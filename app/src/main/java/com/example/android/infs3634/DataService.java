@@ -2,6 +2,7 @@ package com.example.android.infs3634;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.Toast;
 
@@ -141,6 +142,31 @@ public class DataService {
                 }
             });
         }
+    }
+
+    public void completeLesson(String key) {
+        getCurrentUserRef().child("completedWeeks").child(key).setValue("true");
+    }
+
+    public boolean checkCompleteLess(final String key, final ImageView imageView) {
+        boolean complete = false;
+        getCurrentUserRef().child("completedWeeks").child(key).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String snapString = dataSnapshot.getValue() + "";
+
+                if (snapString.equals("true")) {
+                    ImageManager.manager.setFinishIconImageView(key, imageView);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                //
+            }
+        });
+        return complete;
     }
 
 

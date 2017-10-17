@@ -33,6 +33,7 @@ public class ResultActivity extends AppCompatActivity {
         week = (Week) getIntent().getSerializableExtra("Week");
         if (week != null) {
             ImageManager.manager.setResultBadge(week.getWeekId(), resultImageView);
+            DataService.instance.completeLesson(week.getWeekId());
         }
 
     }

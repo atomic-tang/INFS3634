@@ -28,6 +28,9 @@ public class ImageManager {
     static ImageManager manager = new ImageManager();
 
     public void setIconImageView(String weekId, ImageView imageView) {
+
+        DataService.instance.checkCompleteLess(weekId, imageView);
+
         if (weekId.equals(INTRO_TO_JAVA)) {
             imageView.setBackgroundResource(R.drawable.intro_to_java_60);
         } else if (weekId.equals(ELEMENTARY_PROGRAMMING)) {
@@ -68,6 +71,51 @@ public class ImageManager {
             imageView.setBackgroundResource(R.drawable.sqllite_60);
         } else if (weekId.equals(CONTENT_PROVIDERS)) {
             imageView.setBackgroundResource(R.drawable.content_provider_60);
+        }
+    }
+
+    public void setFinishIconImageView(String weekId, ImageView imageView) {
+
+        if (weekId.equals(INTRO_TO_JAVA)) {
+            imageView.setBackgroundResource(R.drawable.intro_to_jave_finished);
+        } else if (weekId.equals(ELEMENTARY_PROGRAMMING)) {
+            imageView.setBackgroundResource(R.drawable.elementary_programming_finished);
+        } else if (weekId.equals(SELECTIONS)) {
+            imageView.setBackgroundResource(R.drawable.selections_finished);
+        } else if (weekId.equals(LOOPS)) {
+            imageView.setBackgroundResource(R.drawable.loops_finished);
+        } else if (weekId.equals(METHODS)) {
+            imageView.setBackgroundResource(R.drawable.methods_finished);
+        } else if (weekId.equals(ARRAYS)) {
+            imageView.setBackgroundResource(R.drawable.arrays_finished);
+        } else if (weekId.equals(OBJECTS)) {
+            imageView.setBackgroundResource(R.drawable.objects_finished);
+        } else if (weekId.equals(JAVA_FUNDAMENTALS)) {
+            imageView.setBackgroundResource(R.drawable.java_fundamentals_finished);
+        } else if (weekId.equals(INHERITANCE)) {
+            imageView.setBackgroundResource(R.drawable.inheritance_finished);
+        } else if (weekId.equals(POLYMORPHISM)) {
+            imageView.setBackgroundResource(R.drawable.polymorphism_finished);
+        } else if (weekId.equals(JAVAFX)) {
+            imageView.setBackgroundResource(R.drawable.java_fundamentals_finished);
+        } else if (weekId.equals(EVENT_DRIVEN_PROGRAMMING)) {
+            imageView.setBackgroundResource(R.drawable.event_driven_programming_finished);
+        } else if (weekId.equals(DATABASE)) {
+            imageView.setBackgroundResource(R.drawable.database_finished);
+        } else if (weekId.equals(HCI)) {
+            imageView.setBackgroundResource(R.drawable.hci_finished);
+        } else if (weekId.equals(ANDROID_FUNDAMENTALS)) {
+            imageView.setBackgroundResource(R.drawable.android_fundamentals_finished);
+        } else if (weekId.equals(ACTIVITIES)) {
+            imageView.setBackgroundResource(R.drawable.activities_finished);
+        } else if (weekId.equals(INTENTS)) {
+            imageView.setBackgroundResource(R.drawable.intents_finished);
+        } else if (weekId.equals(JSON)) {
+            imageView.setBackgroundResource(R.drawable.json_finished);
+        } else if (weekId.equals(SQLLITE)) {
+            imageView.setBackgroundResource(R.drawable.sqllite_finished);
+        } else if (weekId.equals(CONTENT_PROVIDERS)) {
+            imageView.setBackgroundResource(R.drawable.content_provider_finished);
         }
     }
 

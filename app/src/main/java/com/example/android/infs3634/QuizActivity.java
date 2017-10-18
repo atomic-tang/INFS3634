@@ -4,12 +4,16 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -45,6 +49,11 @@ public class QuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
         getSupportActionBar().hide();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(getResources().getColor(R.color.colorPrimary));
+        }
 
         final QuizActivity activity = this;
         mQuizCoordinator = findViewById(R.id.quizCoordinator);
@@ -173,23 +182,30 @@ public class QuizActivity extends AppCompatActivity {
             }
         } else {
             message.setAction(R.string.next, new View.OnClickListener() {
-                @Override
+            @Override
                 public void onClick(View view) {
                     message.dismiss();
                     nextQuestion();
                 }
             });
         }
-        message.setActionTextColor(Color.YELLOW);
+
+        int snackbarTextId = android.support.design.R.id.snackbar_text;
+        TextView textView = (TextView)message.getView().findViewById(snackbarTextId);
+        textView.setTextColor(getResources().getColor(R.color.primaryBlack));
+        message.getView().setBackgroundColor(ContextCompat.getColor(QuizActivity.this, R.color.white));
+        message.setActionTextColor(getResources().getColor(R.color.colorPrimary));
         message.show();
     }
 
     protected void correctAnswer(Button btn) {
-        btn.setBackgroundColor(Color.parseColor("#c0ffd9"));
+        btn.setBackgroundColor(Color.parseColor("#64D677"));
+        btn.setTextColor(Color.WHITE);
     }
 
     protected void incorrectAnswer(Button btn) {
-        btn.setBackgroundColor(Color.parseColor("#ffc0c0"));
+        btn.setBackgroundColor(Color.parseColor("#EB4A4A"));
+        btn.setTextColor(Color.WHITE);
     }
 
     protected void nextQuestion() {
@@ -199,6 +215,12 @@ public class QuizActivity extends AppCompatActivity {
         mBtnB.setBackgroundColor(Color.parseColor("#FAFAFA"));
         mBtnC.setBackgroundColor(Color.parseColor("#FAFAFA"));
         mBtnD.setBackgroundColor(Color.parseColor("#FAFAFA"));
+
+        mBtnA.setTextColor(getResources().getColor(R.color.primaryBlack));
+        mBtnB.setTextColor(getResources().getColor(R.color.primaryBlack));
+        mBtnC.setTextColor(getResources().getColor(R.color.primaryBlack));
+        mBtnD.setTextColor(getResources().getColor(R.color.primaryBlack));
+
 
         renderQuiz();
 

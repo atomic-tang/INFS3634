@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         setViews();
-//        FirebaseAuth.getInstance().signOut();
+        FirebaseAuth.getInstance().signOut();
 
         mainActivity = this;
     }

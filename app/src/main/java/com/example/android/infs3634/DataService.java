@@ -1,6 +1,9 @@
 package com.example.android.infs3634;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.util.Log;
 import android.widget.ImageButton;
@@ -9,6 +12,8 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -16,6 +21,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -53,9 +61,10 @@ public class DataService {
         return getBaseReference().child("questions");
     }
 
-    public void createUserDetails(String firstName, String lastName) {
+    public void createUserDetails(String firstName, String lastName, Uri uri, UserSetupActivity activity) {
         getCurrentUserRef().child("firstName").setValue(firstName);
         getCurrentUserRef().child("lastName").setValue(lastName);
+        uploadImage(uri, getStudentId(), activity   );
     }
 
     public void getCourses(final Context context, final HomeActivity activity) {
@@ -199,7 +208,9 @@ public class DataService {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String url = dataSnapshot.getValue().toString();
-                Picasso.with(context).load(url).into(profileImage);
+                if (url != null) {
+                    Picasso.with(context).load(url).into(profileImage);
+                }
             }
 
             @Override
@@ -248,4 +259,23 @@ public class DataService {
             }
         });
     }
+
+    private void uploadImage(Uri uri, String zId, final UserSetupActivity activity) {
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReference().child("images").child(zId);
+        UploadTask task = storageRef.putFile(uri);
+
+        task.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                @SuppressWarnings("VisibleForTests") Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                getCurrentUserRef().child("profile").setValue(downloadUrl + "");
+
+                Intent intent = new Intent(activity, HomeActivity.class);
+                activity.startActivity(intent);
+
+            }
+        });
+    }
+
 }

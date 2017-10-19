@@ -3,6 +3,7 @@ package com.example.android.infs3634;
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;
 import android.util.Log;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.Toast;
@@ -190,5 +191,18 @@ public class DataService {
         return complete;
     }
 
+    public void getProfile(ImageButton profileImage) {
+        String userId = getStudentId();
+        getCurrentUserRef().child("profile").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
 }

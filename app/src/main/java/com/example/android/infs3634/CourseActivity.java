@@ -5,7 +5,9 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -24,12 +26,12 @@ public class CourseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course);
+
         final CourseActivity activity = this;
 
         Course course = (Course) getIntent().getSerializableExtra("Course");
         if (course != null) {
             getSupportActionBar().setTitle(course.getCourseId());
-
             DataService.instance.getWeeks(this, this, course.getLessonIds());
         }
 
@@ -46,6 +48,5 @@ public class CourseActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 }

@@ -1,6 +1,7 @@
 package com.example.android.infs3634;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -14,6 +15,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -52,12 +55,6 @@ public class MainActivity extends AppCompatActivity {
 //        FirebaseAuth.getInstance().signOut();
 
         mainActivity = this;
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.BLUE);
-        }
     }
 
     @Override
@@ -163,4 +160,5 @@ public class MainActivity extends AppCompatActivity {
         }
         startActivity(intent);
     }
+
 }

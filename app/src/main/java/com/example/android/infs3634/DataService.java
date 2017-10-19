@@ -6,6 +6,7 @@ import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -15,8 +16,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DataService {
 
@@ -191,12 +194,52 @@ public class DataService {
         return complete;
     }
 
-    public void getProfile(ImageButton profileImage) {
-        String userId = getStudentId();
+    public void getProfileImg (final Context context, final ImageView profileImage) {
         getCurrentUserRef().child("profile").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                String url = dataSnapshot.getValue().toString();
+                Picasso.with(context).load(url).into(profileImage);
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    public void getProfile(final Context context, final ImageView profileImage, final TextView username) {
+        getProfileImg(context, profileImage);
+
+        getCurrentUserRef().addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String firstName = dataSnapshot.child("firstName").getValue().toString();
+                String lastName = dataSnapshot.child("lastName").getValue().toString();
+                username.setText(firstName + " " + lastName);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+
+        });
+    }
+
+    public void getBadges(final Context context, final ProfileActivity activity) {
+        getCurrentUserRef().child("completedWeeks").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snap: dataSnapshot.getChildren()) {
+                    String badge = snap.getKey().toString();
+                    activity.badges.add(badge);
+                }
+                if (activity.badges.size() > 0) {
+                    ListAdapter adapter = new BadgeAdapter(context, activity.badges);
+                    activity.gridView.setAdapter(adapter);
+                }
             }
 
             @Override

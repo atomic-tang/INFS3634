@@ -6,4 +6,44 @@
     android:layout_height="match_parent"
     tools:context="com.example.android.infs3634.ProfileActivity">
 
+    <ImageView
+        android:id="@+id/profileImg"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="16dp" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@+id/profileImg"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="48dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:textSize="28sp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
+
+    <GridView
+        android:id="@+id/badgeGridView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:padding="16dp"
+        android:gravity="center"
+        android:horizontalSpacing="16dp"
+        android:numColumns="5"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/profileImg"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"></GridView>
+
 </android.support.constraint.ConstraintLayout>

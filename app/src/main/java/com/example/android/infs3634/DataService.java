@@ -29,10 +29,12 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+// Data service class to handle all queries and actions on the firebase database
 public class DataService {
 
     static DataService instance = new DataService();
 
+    // Get the student id of logged-in user
     public String getStudentId() {
         FirebaseUser mAuth = FirebaseAuth.getInstance().getCurrentUser();
         String email = mAuth.getEmail();
@@ -40,33 +42,40 @@ public class DataService {
         return splitEmail[0];
     }
 
+    // Set a reference to the firebase database
     public DatabaseReference getBaseReference() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
         return reference;
     }
 
+    // Get reference to logged-in user's details from the firebase database
     public DatabaseReference getCurrentUserRef() {
         return getBaseReference().child("users").child(getStudentId());
     }
 
+    // Get reference to lessons stored on the firebase database
     public DatabaseReference getLessonRef() {
         return getBaseReference().child("lessons");
     }
 
+    // Get reference to tasks stored on the firebase database
     public DatabaseReference getTaskRef() {
         return  getBaseReference().child("activities");
     }
 
+    // Get reference to questions stored on the firebase database
     public DatabaseReference getQuestionRef() {
         return getBaseReference().child("questions");
     }
 
+    // Create new users on firebase upon login
     public void createUserDetails(String firstName, String lastName, Uri uri, UserSetupActivity activity) {
         getCurrentUserRef().child("firstName").setValue(firstName);
         getCurrentUserRef().child("lastName").setValue(lastName);
-        uploadImage(uri, getStudentId(), activity   );
+        uploadImageOnSetup(uri, getStudentId(), activity);
     }
 
+    // Get all courses from the firebase database and render in a listview
     public void getCourses(final Context context, final HomeActivity activity) {
         getBaseReference().child("courses").addValueEventListener(new ValueEventListener() {
             @Override
@@ -86,6 +95,7 @@ public class DataService {
         });
     }
 
+    // Get all weekly lessons from the firebase database and render in a listview
     public void getWeeks(final Context context, final CourseActivity activity, final ArrayList<String> weekIds) {
         for (int index = 0; index < weekIds.size(); index++) {
             final int finalIndex = index;
@@ -109,6 +119,7 @@ public class DataService {
 
     }
 
+    // Get all video and quiz tasks for each lesson from the firebase database and render in a listview
     public void getTask(final Context context, final WeekActivity activity, final ArrayList<String> taskIds) {
         for (int index = 0; index < taskIds.size(); index++) {
             final int finalIndex = index;
@@ -137,6 +148,8 @@ public class DataService {
         }
     }
 
+
+    // Get all questions for each quiz task from the firebase database and render in QuizActivity
     public void getQuestion(final Context context, final QuizActivity activity, final ArrayList<String> questionIds) {
         for (int index = 0; index < questionIds.size(); index++) {
             final int finalIndex = index;
@@ -158,17 +171,19 @@ public class DataService {
         }
     }
 
+
+    // Update firebase database with the lessons completed by logged-in user
     public void completeLesson(String key) {
         getCurrentUserRef().child("completedWeeks").child(key).setValue("true");
     }
 
+    // Decrease the opacity of completed lessons in the listview of lessons for each course
     public boolean checkCompleteLess(final String key, final ConstraintLayout layout) {
         boolean complete = false;
         getCurrentUserRef().child("completedWeeks").child(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String snapString = dataSnapshot.getValue() + "";
-
                 if (snapString.equals("true")) {
                     layout.setAlpha(0.5f);
                 }
@@ -182,17 +197,16 @@ public class DataService {
         return complete;
     }
 
+    // Change the badge image of completed lessons in the listview of lessons for each course
     public boolean checkCompleteLess(final String key, final ImageView imageView) {
         boolean complete = false;
         getCurrentUserRef().child("completedWeeks").child(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String snapString = dataSnapshot.getValue() + "";
-
                 if (snapString.equals("true")) {
                     ImageManager.manager.setFinishIconImageView(key, imageView);
                 }
-
             }
 
             @Override
@@ -203,13 +217,17 @@ public class DataService {
         return complete;
     }
 
+
+    // Get the profile image of logged-in user from the firebase database
     public void getProfileImg (final Context context, final ImageView profileImage) {
         getCurrentUserRef().child("profile").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String url = dataSnapshot.getValue().toString();
-                if (url != null) {
-                    Picasso.with(context).load(url).into(profileImage);
+                if (dataSnapshot.exists()) {
+                    String url = dataSnapshot.getValue().toString();
+                    if (url != null) {
+                        Picasso.with(context).load(url).into(profileImage);
+                    }
                 }
             }
 
@@ -220,6 +238,7 @@ public class DataService {
         });
     }
 
+    // Get the profile details of logged-in user from teh firebase database
     public void getProfile(final Context context, final ImageView profileImage, final TextView username) {
         getProfileImg(context, profileImage);
 
@@ -239,6 +258,7 @@ public class DataService {
         });
     }
 
+    // Get the lessons completed by logged-in user from the firebase database to reward badges
     public void getBadges(final Context context, final ProfileActivity activity) {
         getCurrentUserRef().child("completedWeeks").addValueEventListener(new ValueEventListener() {
             @Override
@@ -260,7 +280,31 @@ public class DataService {
         });
     }
 
-    private void uploadImage(Uri uri, String zId, final UserSetupActivity activity) {
+    // Upload the profile image of logged-in user on profile setup onto the firebase database
+    private void uploadImageOnSetup(Uri uri, String zId, final UserSetupActivity activity) {
+        if (uri != null) {
+            FirebaseStorage storage = FirebaseStorage.getInstance();
+            StorageReference storageRef = storage.getReference().child("images").child(zId);
+            UploadTask task = storageRef.putFile(uri);
+
+            task.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    @SuppressWarnings("VisibleForTests") Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                    getCurrentUserRef().child("profile").setValue(downloadUrl + "");
+
+                    Intent intent = new Intent(activity, HomeActivity.class);
+                    activity.startActivity(intent);
+                }
+            });
+        } else {
+            Intent intent = new Intent(activity, HomeActivity.class);
+            activity.startActivity(intent);
+        }
+    }
+
+    // Change the profile image of logged-in user
+    public void uploadImage(Uri uri, String zId , final ProfileActivity activity) {
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference().child("images").child(zId);
         UploadTask task = storageRef.putFile(uri);
@@ -270,12 +314,8 @@ public class DataService {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 @SuppressWarnings("VisibleForTests") Uri downloadUrl = taskSnapshot.getDownloadUrl();
                 getCurrentUserRef().child("profile").setValue(downloadUrl + "");
-
-                Intent intent = new Intent(activity, HomeActivity.class);
-                activity.startActivity(intent);
-
+                Toast.makeText(activity, "Profile picture changed", Toast.LENGTH_SHORT).show();
             }
         });
     }
-
 }

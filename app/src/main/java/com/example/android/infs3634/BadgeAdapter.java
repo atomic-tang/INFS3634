@@ -13,25 +13,23 @@ import android.widget.ImageView;
 
 import java.util.ArrayList;
 
-/**
- * Created by Andy on 19/10/17.
- */
+// Array Adapter for badges earned when users complete a lesson
 
 public class BadgeAdapter extends ArrayAdapter<String> {
     public BadgeAdapter(Context context, ArrayList<String> badges) {
         super(context, R.layout.grid_badge, badges);
     }
 
-
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        // Inflate the view to show each badge earned
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View badgeView = inflater.inflate(R.layout.grid_badge, parent, false);
 
+        // Set the badge image for the lessons completed
         String weekId = getItem(position);
         ImageView badgeImgView = badgeView.findViewById(R.id.badge);
-
         ImageManager.manager.setIconImageView(weekId, badgeImgView);
 
         return badgeView;

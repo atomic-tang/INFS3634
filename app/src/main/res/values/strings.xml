@@ -4,4 +4,6 @@
     <string name="title_activity_lesson">LessonActivity</string>
     <string name="next">next</string>
     <string name="redo">redo quiz</string>
+    <string name="change_profile">change profile</string>
+    <string name="logout">logout</string>
 </resources>

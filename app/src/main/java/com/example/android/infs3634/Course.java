@@ -8,12 +8,14 @@ import com.google.firebase.database.DataSnapshot;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+// Class to create course objects from data retrieved from firebase database
 public class Course implements Serializable {
 
     private String courseId;
     private String courseTitle;
     private  ArrayList<String> lessonIds;
 
+    // Constructor
     Course(DataSnapshot snapshot) {
 
         String key = snapshot.getKey();
@@ -40,12 +42,7 @@ public class Course implements Serializable {
         lessonIds = strings;
     }
 
-    Course(String id, String title, ArrayList<String> ids) {
-        courseTitle = title;
-        courseId = id;
-        lessonIds = ids;
-    }
-
+    // Getter methods
     public ArrayList<String> getLessonIds() {
         return lessonIds;
     }
@@ -57,6 +54,4 @@ public class Course implements Serializable {
     public String getCourseId() {
         return courseId;
     }
-
-
 }

@@ -34,8 +34,8 @@ public class UserSetupActivity extends AppCompatActivity {
     EditText lastNameEdit;
     Button continueButton;
     ImageButton imageButton;
-
-    Uri uri;
+    final int ACTIVITY_SELECT_IMAGE = 1234;
+    Uri uri = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,9 +58,6 @@ public class UserSetupActivity extends AppCompatActivity {
                 String last = lastNameEdit.getText().toString();
 
                 if (first != null && first != "" & last != null & last != "") {
-                    if (uri == null) {
-                        uri = Uri.parse("android.resource://your.package.here/mipmap/account.png");
-                    }
                     DataService.instance.createUserDetails(first, last, uri, UserSetupActivity.this);
                 }
             }
@@ -70,7 +67,6 @@ public class UserSetupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-                final int ACTIVITY_SELECT_IMAGE = 1234;
                 startActivityForResult(i, ACTIVITY_SELECT_IMAGE);
             }
         });
@@ -81,16 +77,19 @@ public class UserSetupActivity extends AppCompatActivity {
     // https://stackoverflow.com/questions/6016000/how-to-open-phones-gallery-through-code
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        try {
-            uri = data.getData();
-            final InputStream imageStream = getContentResolver().openInputStream(uri);
-            final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
-            RoundedBitmapDrawable drawable = RoundedBitmapDrawableFactory.create(getResources(), selectedImage);
-            drawable.setCircular(true);
-            imageButton.setImageBitmap(selectedImage);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        if (requestCode == ACTIVITY_SELECT_IMAGE) {
+            if (resultCode == RESULT_OK) {
+                try {
+                    uri = data.getData();
+                    final InputStream imageStream = getContentResolver().openInputStream(uri);
+                    final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+                    RoundedBitmapDrawable drawable = RoundedBitmapDrawableFactory.create(getResources(), selectedImage);
+                    drawable.setCircular(true);
+                    imageButton.setImageBitmap(selectedImage);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
     };

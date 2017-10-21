@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
         android:id="@+id/activityTitle"
@@ -10,11 +12,11 @@
         android:textColor="@color/white"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Widget.ActionBar.Title"/>
 
-    <ImageView
+    <!--Circular Image View https://github.com/hdodenhof/CircleImageView-->
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profileImgBtn"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:scaleType="fitCenter"
         android:padding="0dp"
         android:src="@mipmap/account"
         android:layout_alignParentRight="true" />

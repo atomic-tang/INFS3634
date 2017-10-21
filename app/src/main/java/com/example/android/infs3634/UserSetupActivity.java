@@ -19,7 +19,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseUser;
 
@@ -33,7 +33,7 @@ public class UserSetupActivity extends AppCompatActivity {
     EditText firstNameEdit;
     EditText lastNameEdit;
     Button continueButton;
-    ImageButton imageButton;
+    ImageView imageButton;
     final int ACTIVITY_SELECT_IMAGE = 1234;
     Uri uri = null;
 
@@ -83,8 +83,6 @@ public class UserSetupActivity extends AppCompatActivity {
                     uri = data.getData();
                     final InputStream imageStream = getContentResolver().openInputStream(uri);
                     final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
-                    RoundedBitmapDrawable drawable = RoundedBitmapDrawableFactory.create(getResources(), selectedImage);
-                    drawable.setCircular(true);
                     imageButton.setImageBitmap(selectedImage);
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();

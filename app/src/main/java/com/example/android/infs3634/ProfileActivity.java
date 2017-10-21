@@ -77,8 +77,6 @@ public class ProfileActivity extends AppCompatActivity {
                     Uri uri = data.getData();
                     final InputStream imageStream = getContentResolver().openInputStream(uri);
                     final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
-                    RoundedBitmapDrawable drawable = RoundedBitmapDrawableFactory.create(getResources(), selectedImage);
-                    drawable.setCircular(true);
                     DataService.instance.uploadImage(uri, DataService.instance.getStudentId(), this);
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();

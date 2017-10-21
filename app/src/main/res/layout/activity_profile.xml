@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context="com.example.android.infs3634.ProfileActivity">
 
-    <ImageView
+    <!--Circular Image View https://github.com/hdodenhof/CircleImageView-->
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profileImg"
         android:layout_width="64dp"
         android:layout_height="64dp"

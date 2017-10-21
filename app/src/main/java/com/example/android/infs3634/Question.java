@@ -4,6 +4,7 @@ import com.google.firebase.database.DataSnapshot;
 
 import java.util.ArrayList;
 
+// Class to create question objects from data retrieved from firebase database
 public class Question {
 
     private String questionId;
@@ -11,6 +12,7 @@ public class Question {
     private ArrayList<String> options;
     private int answer;
 
+    // Constructor
     Question (DataSnapshot snapshot) {
         String questionKey = snapshot.getKey().toString();
         if (questionKey != null) {
@@ -41,6 +43,7 @@ public class Question {
 
     }
 
+    // Getter methods
     public String getQuestionKey() {
         return questionId;
     }

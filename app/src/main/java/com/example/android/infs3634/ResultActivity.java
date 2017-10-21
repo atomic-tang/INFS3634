@@ -7,11 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+// Activity to view result at the end of lesson
 public class ResultActivity extends AppCompatActivity {
 
     ImageView resultImageView;
     Button continueButton;
-
     Week week;
 
     @Override
@@ -20,6 +20,8 @@ public class ResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_result);
         resultImageView = findViewById(R.id.resultImageView);
         continueButton = findViewById(R.id.continuePressed);
+
+        // On-click listener to finish lesson and return to lesson overview
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -30,6 +32,7 @@ public class ResultActivity extends AppCompatActivity {
             }
         });
 
+        // Display badge earned for lesson completion
         week = (Week) getIntent().getSerializableExtra("Week");
         if (week != null) {
             ImageManager.manager.setResultBadge(week.getWeekId(), resultImageView);

@@ -18,19 +18,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".QuizActivity" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".CourseActivity" />
+        <activity android:name=".QuizActivity" android:screenOrientation="portrait" />
+        <activity android:name=".HomeActivity" android:screenOrientation="portrait" />
+        <activity android:name=".CourseActivity" android:screenOrientation="portrait" />
         <activity android:name=".VideoActivity" />
-        <activity android:name=".ResultActivity" />
-        <activity android:name=".WeekActivity" />
+        <activity android:name=".ResultActivity" android:screenOrientation="portrait" />
+        <activity android:name=".WeekActivity" android:screenOrientation="portrait" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -43,8 +43,8 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".UserSetupActivity" />
-        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".UserSetupActivity" android:screenOrientation="portrait" />
+        <activity android:name=".ProfileActivity" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

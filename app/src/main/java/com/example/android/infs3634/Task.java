@@ -2,6 +2,7 @@ package com.example.android.infs3634;
 
 import java.io.Serializable;
 
+// Super class for quiz and video task
 public class Task implements Serializable {
 
     protected String taskKey;

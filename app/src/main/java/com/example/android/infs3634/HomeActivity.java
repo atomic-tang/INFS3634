@@ -1,27 +1,19 @@
 package com.example.android.infs3634;
 
-import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
+// Homepage Activity to view courses available on application
 public class HomeActivity extends AppCompatActivity {
 
     ListView listView;
@@ -37,11 +29,12 @@ public class HomeActivity extends AppCompatActivity {
 
         final HomeActivity activity = this;
 
+        // Get courses from firebase database
         DataService.instance.getCourses(this, this);
 
+        // Display courses in listview
         ListAdapter adapter = new CourseAdaptor(this, courses);
         listView.setAdapter(adapter);
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -53,7 +46,9 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
+    // Method to change action bar with custom toolbar with profile picture
     private void setCustomToolbar(final Context context, String title) {
+        // Inflate custom toolbar and set to replace action bar
         View customToolbar = getLayoutInflater().inflate(R.layout.custom_toolbar, null);
         android.support.v7.app.ActionBar mActionBar = getSupportActionBar();
         mActionBar.setDisplayShowTitleEnabled(false);

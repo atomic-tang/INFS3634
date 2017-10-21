@@ -1,10 +1,6 @@
 package com.example.android.infs3634;
 
-import android.support.constraint.solver.widgets.Snapshot;
-import android.util.Log;
-
 import com.google.firebase.database.DataSnapshot;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -24,6 +20,7 @@ public class Course implements Serializable {
         } else {
             courseId = "";
         }
+
         String name = snapshot.child("name").getValue().toString();
         if (name != null) {
             courseTitle = name;
@@ -32,7 +29,6 @@ public class Course implements Serializable {
         }
 
         ArrayList<String> strings = new ArrayList<>();
-
         for (DataSnapshot snap: snapshot.child("lessons").getChildren()) {
             String lessonKey = snap.getValue().toString();
             if (lessonKey != null) {

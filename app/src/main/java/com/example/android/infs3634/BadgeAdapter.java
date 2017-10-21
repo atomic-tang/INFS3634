@@ -14,12 +14,13 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 
 // Array Adapter for badges earned when users complete a lesson
-
 public class BadgeAdapter extends ArrayAdapter<String> {
+    // Constructor
     public BadgeAdapter(Context context, ArrayList<String> badges) {
         super(context, R.layout.grid_badge, badges);
     }
 
+    // Get view template for badges earned in gridview
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {

@@ -1,22 +1,16 @@
 package com.example.android.infs3634;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.Menu;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
+// Activity to view list of lessons for each course
 public class CourseActivity extends AppCompatActivity {
 
     ListView listView;
@@ -29,16 +23,19 @@ public class CourseActivity extends AppCompatActivity {
 
         final CourseActivity activity = this;
 
+        // Get Lessons for selected course From Home Activity
         Course course = (Course) getIntent().getSerializableExtra("Course");
         if (course != null) {
             getSupportActionBar().setTitle(course.getCourseId());
             DataService.instance.getWeeks(this, this, course.getLessonIds());
         }
 
+        // Display lessons in listview for selected course
         ListAdapter adapter = new WeekAdaptor(this, weeks);
         listView = findViewById(R.id.weekListView);
         listView.setAdapter(adapter);
 
+        // On-click listener to view tasks in lesson
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

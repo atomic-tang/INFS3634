@@ -1,18 +1,15 @@
 package com.example.android.infs3634;
 
-import android.util.Log;
-
 import com.google.firebase.database.DataSnapshot;
 
-import java.io.Serializable;
-
+// Task subclass to create video objects from data retrieved from firebase database
 public class Video extends Task {
 
     private String description;
     private String url;
 
+    // Constructor
     Video(DataSnapshot snapshot) {
-
         String key = snapshot.getKey();
         if (key != null) {
             taskKey = key;
@@ -49,6 +46,7 @@ public class Video extends Task {
         }
     }
 
+    // Getter methods
     public String getDescription() {
         return description;
     }

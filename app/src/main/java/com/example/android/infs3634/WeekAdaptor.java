@@ -13,15 +13,17 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+// Array Adapter for weekly lessons available in each course
 public class WeekAdaptor extends ArrayAdapter<Week> {
-
     public WeekAdaptor(Context context, ArrayList<Week> weeks) {
         super(context, R.layout.row_week,weeks);
     }
 
+    // Get view template for each lesson in listview
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        // Inflate the view to show each lesson
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View weekView = inflater.inflate(R.layout.row_week, parent, false);
 
@@ -31,6 +33,7 @@ public class WeekAdaptor extends ArrayAdapter<Week> {
         TextView titleTextView = weekView.findViewById(R.id.weekTitleTextView);
         TextView descriptionTextView = weekView.findViewById(R.id.weekDescriptionTextView);
 
+        // Set information and badge image for each lesson
         ImageManager.manager.setIconImageView(week.getWeekId(), imageView);
         DataService.instance.checkCompleteLess(week.getWeekId(), layout);
         titleTextView.setText("Week " + week.getWeekNumber() + ": " + week.getWeekTopic());

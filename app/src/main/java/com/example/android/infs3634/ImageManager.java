@@ -3,8 +3,8 @@ package com.example.android.infs3634;
 import android.support.constraint.ConstraintLayout;
 import android.widget.ImageView;
 
+// Custom Image Manager class to set badge image for each lesson
 public class ImageManager {
-
     String INTRO_TO_JAVA = "INFS1609Week1";
     String ELEMENTARY_PROGRAMMING = "INFS1609Week2";
     String SELECTIONS = "INFS1609Week3";
@@ -28,8 +28,10 @@ public class ImageManager {
 
     static ImageManager manager = new ImageManager();
 
+    // Method to set badge image of each lesson
     public void setIconImageView(String weekId, ImageView imageView) {
 
+        // Check if logged-in user completes a lesson
         DataService.instance.checkCompleteLess(weekId, imageView);
 
         if (weekId.equals(INTRO_TO_JAVA)) {
@@ -75,6 +77,7 @@ public class ImageManager {
         }
     }
 
+    // Method to change colour of badge to yellow for lessons completed by logged-in user
     public void setFinishIconImageView(String weekId, ImageView imageView) {
 
         if (weekId.equals(INTRO_TO_JAVA)) {
@@ -120,6 +123,7 @@ public class ImageManager {
         }
     }
 
+    // Method to set image of badge earned upon a logged-in user's completion of a lesson
     public void setResultBadge(String weekId, ImageView imageView) {
         if (weekId.equals(INTRO_TO_JAVA)) {
             imageView.setBackgroundResource(R.drawable.intro_to_java_192);

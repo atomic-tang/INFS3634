@@ -8,10 +8,12 @@ import com.google.firebase.database.DataSnapshot;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+// Task subclass to create quiz objects from data retrieved from firebase database
 public class Quiz extends Task {
 
     private ArrayList<String> questionIds;
 
+    // Constructor
     public Quiz(DataSnapshot snapshot) {
         super();
 
@@ -48,6 +50,7 @@ public class Quiz extends Task {
         questionIds = strings;
     }
 
+    // Getter method
     public ArrayList<String> getQuestionIds() {
         return questionIds;
     }

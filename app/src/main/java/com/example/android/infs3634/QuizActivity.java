@@ -10,18 +10,15 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 
+// Activity to view quiz task in lesson
 public class QuizActivity extends AppCompatActivity {
 
     ArrayList<Question> questions = new ArrayList<Question>();
@@ -32,7 +29,6 @@ public class QuizActivity extends AppCompatActivity {
     ProgressBar mProgressBar;
     TextView mQuestionNumberText;
     TextView mQuestionText;
-    TextView lessonTitle;
     Button mBtnA;
     Button mBtnB;
     Button mBtnC;
@@ -49,13 +45,14 @@ public class QuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
         getSupportActionBar().hide();
+
+        // Set status bar colour
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(getResources().getColor(R.color.colorPrimary));
         }
 
-        final QuizActivity activity = this;
         mQuizCoordinator = findViewById(R.id.quizCoordinator);
         mLessonTitle = findViewById(R.id.lessonTitle);
         mLessonProgress = findViewById(R.id.lessonProgress);
@@ -67,19 +64,24 @@ public class QuizActivity extends AppCompatActivity {
         mBtnC = findViewById(R.id.btnC);
         mBtnD = findViewById(R.id.btnD);
 
+        // Get list of tasks for lesson
         tasks = (ArrayList<Task>) getIntent().getSerializableExtra("Tasks");
         taskIndex = (int) getIntent().getSerializableExtra("Task Index") + 1;
         totalTasks = (int) getIntent().getSerializableExtra("Total Tasks");
         week = (Week) getIntent().getSerializableExtra("Week");
         mLessonTitle.setText("Week " + week.getWeekNumber() + ": " + week.getWeekTopic());
-
         int progress = Math.round(100 * taskIndex / totalTasks);
+
+        // Get current quiz from list of tasks
         Quiz quiz = (Quiz) tasks.get(0);
+
+        // Get questions for quiz from firebase database
         DataService.instance.getQuestion(this, this, quiz.getQuestionIds());
 
         mLessonProgress.setText(taskIndex + " / " + totalTasks);
         mProgressBar.setProgress(progress);
 
+        // On-click listeners to select answer for quiz question
         mBtnA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,6 +114,7 @@ public class QuizActivity extends AppCompatActivity {
         });
     }
 
+    // Method to render question text and question options
     protected void renderQuiz() {
         mQuestionNumberText.setText("question " + (questionIndex + 1) + " of " + questions.size());
         mQuestionText.setText(questions.get(questionIndex).getQuestion());
@@ -121,6 +124,7 @@ public class QuizActivity extends AppCompatActivity {
         mBtnD.setText(questions.get(questionIndex).getOptions().get(3));
     }
 
+    // Method to check answer
     protected void checkAnswer(String selected, int optionIndex) {
         int answerIndex = questions.get(questionIndex).getAnswer();
         String answer = questions.get(questionIndex).getOptions().get(answerIndex);
@@ -161,6 +165,8 @@ public class QuizActivity extends AppCompatActivity {
             }
         }
 
+        // Snackbar to notify logged-in user if answer is correct or incorrect
+        // https://developer.android.com/training/snackbar/showing.html
         final Snackbar message = Snackbar.make(mQuizCoordinator, response, Snackbar.LENGTH_INDEFINITE);
         if (questionIndex == questions.size() - 1) {
             if (totalScore < (double) questions.size() / 2) {
@@ -190,24 +196,28 @@ public class QuizActivity extends AppCompatActivity {
             });
         }
 
+        // Customise snackbar
         int snackbarTextId = android.support.design.R.id.snackbar_text;
-        TextView textView = (TextView)message.getView().findViewById(snackbarTextId);
+        TextView textView = message.getView().findViewById(snackbarTextId);
         textView.setTextColor(getResources().getColor(R.color.primaryBlack));
         message.getView().setBackgroundColor(ContextCompat.getColor(QuizActivity.this, R.color.white));
         message.setActionTextColor(getResources().getColor(R.color.colorPrimary));
         message.show();
     }
 
+    // Method to highlight correct answer
     protected void correctAnswer(Button btn) {
         btn.setBackgroundColor(Color.parseColor("#64D677"));
         btn.setTextColor(Color.WHITE);
     }
 
+    // Method to highlight logged-in user's incorrect answer
     protected void incorrectAnswer(Button btn) {
         btn.setBackgroundColor(Color.parseColor("#EB4A4A"));
         btn.setTextColor(Color.WHITE);
     }
 
+    // Method to render quiz with next question
     protected void nextQuestion() {
         questionIndex++;
 
@@ -230,9 +240,13 @@ public class QuizActivity extends AppCompatActivity {
         mBtnD.setEnabled(true);
     }
 
+    // Method to alert logged-in users upon passing a quiz
+    // https://developer.android.com/guide/topics/ui/dialogs.html
     public void passAlert() {
+        // remove current quiz from list of tasks for lesson
         tasks.remove(0);
 
+        // Set action text for alert dialog
         String action = "";
         if (tasks.size() > 0) {
             action = "next";
@@ -247,20 +261,26 @@ public class QuizActivity extends AppCompatActivity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
+                        // Determine if there are any more tasks left for lesson
                         dialog.cancel();
                         if (tasks.size() > 0) {
                             Intent intent;
                             if (tasks.get(0).getType().equalsIgnoreCase("quiz")) {
+                                // if next task is a quiz create intent for another Quiz Activity
                                 intent = new Intent(QuizActivity.this, QuizActivity.class);
                             } else {
+                                // if next task is a video task create intent for Video Activity
                                 intent = new Intent(QuizActivity.this, VideoActivity.class);
                             }
+
+                            // Pass remaining task list to next task activity
                             intent.putExtra("Tasks", tasks);
                             intent.putExtra("Task Index", taskIndex);
                             intent.putExtra("Total Tasks", totalTasks);
                             intent.putExtra("Week", week);
                             startActivity(intent);
                         } else {
+                            // If there are no more tasks left for lesson, show result activity
                             Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
                             intent.putExtra("Week", week);
                             startActivity(intent);
@@ -272,6 +292,8 @@ public class QuizActivity extends AppCompatActivity {
         redoDialog.show();
     }
 
+    // Method to alert logged-in users upon failing a quiz
+    // https://developer.android.com/guide/topics/ui/dialogs.html
     public void redoAlert(){
         AlertDialog.Builder redoDialogBuilder = new AlertDialog.Builder(this);
         redoDialogBuilder.setTitle("Sorry...");
@@ -280,6 +302,7 @@ public class QuizActivity extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
+                                // restart activity for logged-in user to restart quiz
                                 Intent intent = new Intent(QuizActivity.this, QuizActivity.class);
                                 intent.putExtra("Tasks", tasks);
                                 intent.putExtra("Task Index", taskIndex - 1);

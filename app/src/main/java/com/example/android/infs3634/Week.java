@@ -1,12 +1,10 @@
 package com.example.android.infs3634;
 
-import android.util.Log;
-
 import com.google.firebase.database.DataSnapshot;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
+// Class to create lesson weeks from data retrieved from firebase database
 public class Week implements Serializable {
 
     private String weekId;
@@ -15,8 +13,8 @@ public class Week implements Serializable {
     private String weekDetails;
     private ArrayList<String> activityKeys;
 
+    // Constructor
     Week(DataSnapshot snapshot) {
-
         String key = snapshot.getKey();
         if (key != null) {
             weekId = key;
@@ -58,13 +56,7 @@ public class Week implements Serializable {
 
     }
 
-    Week(String key, String number, String topic, String details, String[] actKeys) {
-        weekId = key;
-        weekNumber = number;
-        weekTopic = topic;
-        weekDetails = details;
-    }
-
+    // Getter methods
     public String getWeekId() {
         return weekId;
     }

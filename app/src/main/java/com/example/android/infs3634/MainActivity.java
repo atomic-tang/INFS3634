@@ -1,22 +1,14 @@
 package com.example.android.infs3634;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,13 +16,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseAuthUserCollisionException;
-import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+// Launcher Activity for users to log in
 public class MainActivity extends AppCompatActivity {
 
     MainActivity mainActivity;
@@ -51,12 +41,13 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        setViews();
         FirebaseAuth.getInstance().signOut();
+        setViews();
 
         mainActivity = this;
     }
 
+    // Method to check if logged-in user matches with current login session on firebase
     @Override
     protected void onStart() {
         super.onStart();
@@ -66,19 +57,17 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Method to render Login screen
     private void setViews() {
-
-        final String TAG = "setViews";
-
         emailEditText = findViewById(R.id.emailEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
         loginButton = findViewById(R.id.loginButton);
         progressDialog = new ProgressDialog(this);
 
+        // On-click listener to check login details
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 final String email = emailEditText.getText().toString().trim();
                 final String password = passwordEditText.getText().toString().trim();
 
@@ -92,8 +81,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 progressDialog.setMessage("Logging in");
                 progressDialog.show();
-
-
 
                 mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -120,12 +107,12 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
-
-
             }
         });
     }
 
+
+    // Method to create new user on firebase
     private void createuser(final String email, String password) {
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -151,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    // Method to direct logged-in users to either User Setup or Home activity
     private void nextActivity(boolean newAccount) {
         Intent intent;
         if (newAccount) {
@@ -160,5 +148,4 @@ public class MainActivity extends AppCompatActivity {
         }
         startActivity(intent);
     }
-
 }

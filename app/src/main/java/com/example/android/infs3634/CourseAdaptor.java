@@ -11,18 +11,22 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+// Array Adapter for courses available in application
 public class CourseAdaptor extends ArrayAdapter<Course> {
-
+    // Constructor
     CourseAdaptor(Context context, ArrayList<Course> courses) {
         super(context, R.layout.row_course, courses);
     }
 
+    // Get view template for each course in listview
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        // Inflate the view to show each course
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View courseView = inflater.inflate(R.layout.row_course, parent, false);
 
+        // Set information for each course
         Course course = getItem(position);
         TextView titleTextView = courseView.findViewById(R.id.courseTitleTextView);
         TextView codeTextView = courseView.findViewById(R.id.courseCodeTextView);

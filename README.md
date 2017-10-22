@@ -3,11 +3,13 @@
 ### What is this repository for? ###
 
 * Quiz application for INFS3634 Group assignment 
-* 1.0
+* Version 1.0
 
 ### How do I get set up? ###
 
-* Run in Android Studio
+* Open as an existing project in Android Studio
+* If a dialog appears, select to remove selected files (project.iml and app.iml)
+* Enjoy! :)
 
 ### Authors ###
 

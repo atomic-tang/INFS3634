@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
-//        FirebaseAuth.getInstance().signOut();
         setViews();
 
         mainActivity = this;

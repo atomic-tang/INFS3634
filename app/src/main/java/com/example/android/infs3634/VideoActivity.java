@@ -1,14 +1,20 @@
 package com.example.android.infs3634;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.MediaController;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -37,7 +43,8 @@ public class VideoActivity extends AppCompatActivity {
         final VideoActivity activity = this;
 
         Button mNextBtn = findViewById(R.id.nextBtn);
-        VideoView mVideoView = findViewById(R.id.videoView);
+        FrameLayout mVideoWrapper = findViewById(R.id.videoWrapper);
+        final VideoView mVideoView = findViewById(R.id.videoView);
         TextView mWeekProgress = findViewById(R.id.textView3);
         ProgressBar mProgressBar = findViewById(R.id.progressBar2);
         TextView mTitle = findViewById(R.id.title);
@@ -62,18 +69,25 @@ public class VideoActivity extends AppCompatActivity {
         mTitle.setText(video.getTitle());
         mDescription.setText(video.getDescription());
 
-        // Set media controller for video
-        MediaController mediaController = new MediaController(this);
-        mediaController.setAnchorView(mVideoView);
-        mVideoView.setMediaController(mediaController);
+        // Prepare video with URI
+        // https://stackoverflow.com/questions/37865482/firebase-storage-video-streaming
         mVideoView.setVideoURI(videoUri);
         mVideoView.requestFocus();
 
-        // remove current quiz from list of tasks for lesson
-        tasks.remove(0);
+        // Set media controller for video
+        // https://stackoverflow.com/questions/3686729/mediacontroller-positioning-over-videoview
+        mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer arg0) {
+                MediaController mediaController = new MediaController(VideoActivity.this);
+                mVideoView.setMediaController(mediaController);
+                mediaController.setAnchorView(mVideoView);
+                mVideoView.start();
+            }
+        });
 
         // Set text for button
-        if (tasks.size() > 0) {
+        if (tasks.size() - 1 > 0) {
             mNextBtn.setText("Next");
         } else {
             mNextBtn.setText("Finish Lesson");
@@ -83,6 +97,8 @@ public class VideoActivity extends AppCompatActivity {
         mNextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // remove current quiz from list of tasks for lesson
+                tasks.remove(0);
                 // Determine if there are more tasks left for lesson
                 if (tasks.size() > 0) {
                     Intent intent;

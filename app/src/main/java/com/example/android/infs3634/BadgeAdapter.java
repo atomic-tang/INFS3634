@@ -31,7 +31,7 @@ public class BadgeAdapter extends ArrayAdapter<String> {
         // Set the badge image for the lessons completed
         String weekId = getItem(position);
         ImageView badgeImgView = badgeView.findViewById(R.id.badge);
-        ImageManager.manager.setIconImageView(weekId, badgeImgView);
+        ImageManager.manager.setIconProfile(weekId, badgeImgView);
 
         return badgeView;
     }

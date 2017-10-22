@@ -77,6 +77,52 @@ public class ImageManager {
         }
     }
 
+    // Method to set badge image of each lesson for profile page
+    public void setIconProfile(String weekId, ImageView imageView) {
+
+        if (weekId.equals(INTRO_TO_JAVA)) {
+            imageView.setImageResource(R.drawable.intro_to_java_60);
+        } else if (weekId.equals(ELEMENTARY_PROGRAMMING)) {
+            imageView.setImageResource(R.drawable.elementary_programming_60);
+        } else if (weekId.equals(SELECTIONS)) {
+            imageView.setImageResource(R.drawable.selections_60);
+        } else if (weekId.equals(LOOPS)) {
+            imageView.setImageResource(R.drawable.loops_60);
+        } else if (weekId.equals(METHODS)) {
+            imageView.setImageResource(R.drawable.methods_60);
+        } else if (weekId.equals(ARRAYS)) {
+            imageView.setImageResource(R.drawable.arrays_60);
+        } else if (weekId.equals(OBJECTS)) {
+            imageView.setImageResource(R.drawable.objects_60);
+        } else if (weekId.equals(JAVA_FUNDAMENTALS)) {
+            imageView.setImageResource(R.drawable.java_fundamentals_60);
+        } else if (weekId.equals(INHERITANCE)) {
+            imageView.setImageResource(R.drawable.inheritance_60);
+        } else if (weekId.equals(POLYMORPHISM)) {
+            imageView.setImageResource(R.drawable.polymorphism_60);
+        } else if (weekId.equals(JAVAFX)) {
+            imageView.setImageResource(R.drawable.java_fundamentals_60);
+        } else if (weekId.equals(EVENT_DRIVEN_PROGRAMMING)) {
+            imageView.setImageResource(R.drawable.event_driven_programming_60);
+        } else if (weekId.equals(DATABASE)) {
+            imageView.setImageResource(R.drawable.database_60);
+        } else if (weekId.equals(HCI)) {
+            imageView.setImageResource(R.drawable.hci_60);
+        } else if (weekId.equals(ANDROID_FUNDAMENTALS)) {
+            imageView.setImageResource(R.drawable.android_fundamentals_60);
+        } else if (weekId.equals(ACTIVITIES)) {
+            imageView.setImageResource(R.drawable.activities_60);
+        } else if (weekId.equals(INTENTS)) {
+            imageView.setImageResource(R.drawable.intents_60);
+        } else if (weekId.equals(JSON)) {
+            imageView.setImageResource(R.drawable.json_60);
+        } else if (weekId.equals(SQLLITE)) {
+            imageView.setImageResource(R.drawable.sqllite_60);
+        } else if (weekId.equals(CONTENT_PROVIDERS)) {
+            imageView.setImageResource(R.drawable.content_provider_60);
+        }
+    }
+
     // Method to change colour of badge to yellow for lessons completed by logged-in user
     public void setFinishIconImageView(String weekId, ImageView imageView) {
 

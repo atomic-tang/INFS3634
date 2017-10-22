@@ -226,6 +226,8 @@ public class DataService {
                 if (dataSnapshot.exists()) {
                     String url = dataSnapshot.getValue().toString();
                     if (url != null) {
+                        // Load image from firebase into image view
+                        // https://stackoverflow.com/questions/39702304/retrieve-stored-image-from-firebase-storage
                         Picasso.with(context).load(url).into(profileImage);
                     }
                 }

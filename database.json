@@ -1,0 +1,573 @@
+{
+  "activities" : {
+    "INFS1609Week1Quiz1" : {
+      "questions" : [ "INFS1609Week1Quiz1Q1", "INFS1609Week1Quiz1Q2", "INFS1609Week1Quiz1Q3" ],
+      "title" : "Introduction to Java Quiz",
+      "type" : "quiz"
+    },
+    "INFS1609Week1Quiz2" : {
+      "questions" : [ "INFS1609Week1Quiz2Q1", "INFS1609Week1Quiz2Q2", "INFS1609Week1Quiz2Q3", "INFS1609Week1Quiz2Q4", "INFS1609Week1Quiz2Q5" ],
+      "title" : "Java Basics Quiz",
+      "type" : "quiz"
+    },
+    "INFS1609Week1Video1" : {
+      "description" : "I will say that whether you are using JDK 6, 7, or 8 does not matter since these are beginning tutorials.  The concepts covered will be applicable to all.",
+      "title" : "Introduction to Java",
+      "type" : "video",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/infs3634-178323.appspot.com/o/videos%2FINFS1609%2Fweek%201%2FJava%20Tutorial%20for%20Beginners%20-%201%20-%20Your%20first%20Java%20Program.webm?alt=media&token=bb9e9250-cc05-41ce-9971-5a287444d182"
+    },
+    "INFS1609Week1Video2" : {
+      "description" : "In this tutorial, we cover the basics of using variables in Java.  Two of Java's primitive types are introduced: int and double. We also introduce the String and Boolean types. We go through various examples of how variables are created, used, and evaluated.",
+      "title" : "Java Basics",
+      "type" : "video",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/infs3634-178323.appspot.com/o/videos%2FINFS1609%2Fweek%201%2FJava%20Tutorial%20for%20Beginners%20-%201%20-%20Your%20first%20Java%20Program.webm?alt=media&token=bb9e9250-cc05-41ce-9971-5a287444d182"
+    },
+    "INFS1609Week2Quiz1" : {
+      "questions" : [ "INFS1609Week2Quiz1Q1", "INFS1609Week2Quiz1Q2", "INFS1609Week2Quiz1Q3" ],
+      "title" : "Elementry Quiz 1",
+      "type" : "quiz"
+    },
+    "INFS1609Week2Quiz2" : {
+      "questions" : [ "INFS1609Week2Quiz2Q1", "INFS1609Week2Quiz2Q2", "INFS1609Week2Quiz2Q3", "INFS1609Week2Quiz2Q4", "INFS1609Week2Quiz2Q5" ],
+      "title" : "Elementary Quiz 2",
+      "type" : "quiz"
+    },
+    "INFS1609Week2Video1" : {
+      "description" : "Math Operators",
+      "title" : "Math Operators",
+      "type" : "video",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/infs3634-178323.appspot.com/o/videos%2FINFS1609%2Fweek%202%2FJava_Tutorial_for_Beginners_-_3_-_Math_Operators.mp4?alt=media&token=4a2abe29-3462-4d5e-884b-767bf89af7cf"
+    },
+    "INFS1609Week2Video2" : {
+      "description" : "More Operators",
+      "title" : "More Operators",
+      "type" : "video",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/infs3634-178323.appspot.com/o/videos%2FINFS1609%2Fweek%202%2FJava_Tutorial_for_Beginners_-_4_-_More_on_Operators.mp4?alt=media&token=cee4c794-355f-4dff-a621-27f1ae78a335"
+    },
+    "INFS1609Week3Quiz1" : {
+      "questions" : [ "INFS1609Week1Quiz1Q1", "INFS1609Week1Quiz1Q2", "INFS1609Week1Quiz1Q3" ],
+      "title" : "If / Else Conditional Statements",
+      "type" : "quiz"
+    },
+    "INFS1609Week3Quiz2" : {
+      "questions" : [ "INFS1609Week1Quiz1Q1", "INFS1609Week1Quiz1Q2", "INFS1609Week1Quiz1Q3" ],
+      "title" : "Switches",
+      "type" : "quiz"
+    },
+    "INFS1609Week3Video1" : {
+      "description" : "If / Else Conditional Statements",
+      "title" : "If / Else Conditional Statements",
+      "type" : "video",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/infs3634-178323.appspot.com/o/videos%2FINFS1609%2Fweek%203%2FJava_Tutorial_for_Beginners_-_7_-_If_and_Else_Conditional_Statements.mp4?alt=media&token=825ed4f3-2d66-46af-9dcd-3373ffc7163d"
+    },
+    "INFS1609Week3Video2" : {
+      "description" : "Switches",
+      "title" : "Switches",
+      "type" : "video",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/infs3634-178323.appspot.com/o/videos%2FINFS1609%2Fweek%203%2FJava_Tutorial_for_Beginners_-_8_-__Switch_statements.mp4?alt=media&token=b91c3c3f-0a0d-488c-ab7f-c5aef2b688eb"
+    },
+    "INFS1609Week4Quiz1" : {
+      "questions" : [ "INFS1609Week1Quiz1Q1", "INFS1609Week1Quiz1Q2", "INFS1609Week1Quiz1Q3" ],
+      "title" : "For Loops",
+      "type" : "quiz"
+    },
+    "INFS1609Week4Quiz2" : {
+      "questions" : [ "INFS1609Week1Quiz1Q1", "INFS1609Week1Quiz1Q2", "INFS1609Week1Quiz1Q3" ],
+      "title" : "While Loops",
+      "type" : "quiz"
+    },
+    "INFS1609Week4Video1" : {
+      "description" : "This video is about for loops.",
+      "title" : "For Loops",
+      "type" : "video",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/infs3634-178323.appspot.com/o/videos%2FINFS1609%2Fweek%204%2FJava_Tutorial_for_Beginners_-_9_-_The_For_Loop.mp4?alt=media&token=db411594-ab40-4e8a-a521-cb0886bee925"
+    },
+    "INFS1609Week4Video2" : {
+      "description" : "This video is about while loops.",
+      "title" : "While Loops",
+      "type" : "video",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/infs3634-178323.appspot.com/o/videos%2FINFS1609%2Fweek%204%2FJava_Tutorial_for_Beginners_-_10_-_The_While_Loop.mp4?alt=media&token=638cfea2-cbbf-4bf4-820c-865c9e804170"
+    },
+    "INFS1609Week5Quiz1" : {
+      "questions" : [ "INFS1609Week1Quiz1Q1", "INFS1609Week1Quiz1Q2", "INFS1609Week1Quiz1Q3" ],
+      "title" : "Methods Quiz",
+      "type" : "quiz"
+    },
+    "INFS1609Week5Video1" : {
+      "description" : "This video is about methods",
+      "title" : "Methods",
+      "type" : "video",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/infs3634-178323.appspot.com/o/videos%2FINFS1609%2Fweek%205%2FJava%20Programming%20Tutorial%20-%2015%20-%20Use%20Methods%20with%20Parameters.mp4?alt=media&token=c1c38f94-289e-49db-b79f-c0076fd9335b"
+    },
+    "INFS1609Week6Quiz1" : {
+      "questions" : [ "INFS1609Week1Quiz1Q1", "INFS1609Week1Quiz1Q2", "INFS1609Week1Quiz1Q3" ],
+      "title" : "Arrays Quiz",
+      "type" : "quiz"
+    },
+    "INFS1609Week6Quiz2" : {
+      "questions" : [ "INFS1609Week1Quiz1Q1", "INFS1609Week1Quiz1Q2", "INFS1609Week1Quiz1Q3" ],
+      "title" : "Multidimensional Arrays Quiz",
+      "type" : "quiz"
+    },
+    "INFS1609Week6Video1" : {
+      "description" : "This video is about arrays",
+      "title" : "Arrays",
+      "type" : "video",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/infs3634-178323.appspot.com/o/videos%2FINFS1609%2Fweek%206%2FJava%20Programming%20Tutorial%20-%2027%20-%20Introduction%20to%20Arrays.mp4?alt=media&token=25c9428f-e013-4382-8f38-30134cdf214e"
+    },
+    "INFS1609Week6Video2" : {
+      "description" : "This video is about multidimensional arrays",
+      "title" : "Multidimensional arrays",
+      "type" : "video",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/infs3634-178323.appspot.com/o/videos%2FINFS1609%2Fweek%206%2FJava%20Programming%20Tutorial%20-%2028%20-%20Creating%20an%20Array%20Table.mp4?alt=media&token=f78f07cc-5451-4140-be9c-2b2961135c69"
+    },
+    "INFS1609Week7Quiz1" : {
+      "questions" : [ "INFS1609Week1Quiz1Q1", "INFS1609Week1Quiz1Q2", "INFS1609Week1Quiz1Q3" ],
+      "title" : "Objects Quiz",
+      "type" : "quiz"
+    },
+    "INFS1609Week7Video1" : {
+      "description" : "This video is about objects",
+      "title" : "Objects",
+      "type" : "video",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/infs3634-178323.appspot.com/o/videos%2FINFS1609%2Fweek%207%2FClass%20and%20Objects%20in%20Java%20-%20Easy%20way%20to%20understand.mp4?alt=media&token=492e2f71-d1b1-4642-b85b-ff65cda764b0"
+    },
+    "INFS2605Week1Quiz1" : {
+      "questions" : [ "INFS2605Week1Quiz1Q1", "INFS2605Week1Quiz1Q2", "INFS2605Week1Quiz1Q3" ],
+      "title" : "Java Fundamentals",
+      "type" : "quiz"
+    },
+    "INFS2605Week1Video1" : {
+      "description" : "This video is about Java fundamentals 1",
+      "title" : "Java Fundamental",
+      "type" : "video",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/infs3634-178323.appspot.com/o/videos%2FINFS1609%2Fweek%201%2FJava%20Tutorial%20for%20Beginners%20-%201%20-%20Your%20first%20Java%20Program.webm?alt=media&token=bb9e9250-cc05-41ce-9971-5a287444d182"
+    },
+    "INFS2605Week2Quiz1" : {
+      "questions" : [ "INFS1609Week1Quiz1Q1", "INFS1609Week1Quiz1Q2", "INFS1609Week1Quiz1Q3" ],
+      "title" : "Inheritance",
+      "type" : "quiz"
+    },
+    "INFS2605Week2Quiz2" : {
+      "questions" : [ "INFS1609Week1Quiz1Q1", "INFS1609Week1Quiz1Q2", "INFS1609Week1Quiz1Q3" ],
+      "title" : "Abstract Classes",
+      "type" : "quiz"
+    },
+    "INFS2605Week2Video1" : {
+      "description" : "This video is about Inheritance",
+      "title" : "Inheritance",
+      "type" : "video",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/infs3634-178323.appspot.com/o/videos%2FINFS1609%2Fweek%201%2FJava%20Tutorial%20for%20Beginners%20-%201%20-%20Your%20first%20Java%20Program.webm?alt=media&token=bb9e9250-cc05-41ce-9971-5a287444d182"
+    },
+    "INFS2605Week2Video2" : {
+      "description" : "This video is about Abstract Classes",
+      "title" : "Abstract Classes",
+      "type" : "video",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/infs3634-178323.appspot.com/o/videos%2FINFS1609%2Fweek%201%2FJava%20Tutorial%20for%20Beginners%20-%201%20-%20Your%20first%20Java%20Program.webm?alt=media&token=bb9e9250-cc05-41ce-9971-5a287444d182"
+    },
+    "INFS2605Week3Quiz1" : {
+      "questions" : [ "INFS1609Week1Quiz1Q1", "INFS1609Week1Quiz1Q2", "INFS1609Week1Quiz1Q3" ],
+      "title" : "Polymorphism",
+      "type" : "quiz"
+    },
+    "INFS2605Week3Quiz2" : {
+      "questions" : [ "INFS1609Week1Quiz1Q1", "INFS1609Week1Quiz1Q2", "INFS1609Week1Quiz1Q3" ],
+      "title" : "Interfaces",
+      "type" : "quiz"
+    },
+    "INFS2605Week3Video1" : {
+      "description" : "This video is about Polymorphism",
+      "title" : "Polymorphism",
+      "type" : "video",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/infs3634-178323.appspot.com/o/videos%2FINFS1609%2Fweek%201%2FJava%20Tutorial%20for%20Beginners%20-%201%20-%20Your%20first%20Java%20Program.webm?alt=media&token=bb9e9250-cc05-41ce-9971-5a287444d182"
+    },
+    "INFS2605Week3Video2" : {
+      "description" : "This video is about Interfaces",
+      "title" : "Interfaces",
+      "type" : "video",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/infs3634-178323.appspot.com/o/videos%2FINFS1609%2Fweek%201%2FJava%20Tutorial%20for%20Beginners%20-%201%20-%20Your%20first%20Java%20Program.webm?alt=media&token=bb9e9250-cc05-41ce-9971-5a287444d182"
+    },
+    "INFS2605Week4Quiz1" : {
+      "questions" : [ "INFS1609Week1Quiz1Q1", "INFS1609Week1Quiz1Q2", "INFS1609Week1Quiz1Q3" ],
+      "title" : "JavaFX",
+      "type" : "quiz"
+    },
+    "INFS2605Week4Video1" : {
+      "description" : "This video is about JavaFX",
+      "title" : "JavaFX",
+      "type" : "video",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/infs3634-178323.appspot.com/o/videos%2FINFS1609%2Fweek%201%2FJava%20Tutorial%20for%20Beginners%20-%201%20-%20Your%20first%20Java%20Program.webm?alt=media&token=bb9e9250-cc05-41ce-9971-5a287444d182"
+    },
+    "INFS2605Week5Quiz1" : {
+      "questions" : [ "INFS1609Week1Quiz1Q1", "INFS1609Week1Quiz1Q2", "INFS1609Week1Quiz1Q3" ],
+      "title" : "Event-driven Programming",
+      "type" : "quiz"
+    },
+    "INFS2605Week5Video1" : {
+      "description" : "This video is about Event-driven programming",
+      "title" : "Event-driven Programming",
+      "type" : "video",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/infs3634-178323.appspot.com/o/videos%2FINFS1609%2Fweek%201%2FJava%20Tutorial%20for%20Beginners%20-%201%20-%20Your%20first%20Java%20Program.webm?alt=media&token=bb9e9250-cc05-41ce-9971-5a287444d182"
+    },
+    "INFS2605Week6Quiz1" : {
+      "questions" : [ "INFS1609Week1Quiz1Q1", "INFS1609Week1Quiz1Q2", "INFS1609Week1Quiz1Q3" ],
+      "title" : "Database",
+      "type" : "quiz"
+    },
+    "INFS2605Week6Video1" : {
+      "description" : "This video is about databases",
+      "title" : "Database",
+      "type" : "video",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/infs3634-178323.appspot.com/o/videos%2FINFS1609%2Fweek%201%2FJava%20Tutorial%20for%20Beginners%20-%201%20-%20Your%20first%20Java%20Program.webm?alt=media&token=bb9e9250-cc05-41ce-9971-5a287444d182"
+    },
+    "INFS2605Week7Quiz1" : {
+      "questions" : [ "INFS1609Week1Quiz1Q1", "INFS1609Week1Quiz1Q2", "INFS1609Week1Quiz1Q3" ],
+      "title" : "HCI",
+      "type" : "quiz"
+    },
+    "INFS2605Week7Video1" : {
+      "description" : "This video is about HCI",
+      "title" : "HCI",
+      "type" : "video",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/infs3634-178323.appspot.com/o/videos%2FINFS1609%2Fweek%201%2FJava%20Tutorial%20for%20Beginners%20-%201%20-%20Your%20first%20Java%20Program.webm?alt=media&token=bb9e9250-cc05-41ce-9971-5a287444d182"
+    },
+    "INFS3634Week1Quiz1" : {
+      "questions" : [ "INFS3634Week1Quiz1Q1", "INFS3634Week1Quiz1Q2", "INFS3634Week1Quiz1Q3" ],
+      "title" : "Android Fundamentals",
+      "type" : "quiz"
+    },
+    "INFS3634Week1Video1" : {
+      "description" : "This video is about Android fundamentals",
+      "title" : "Android Fundamentals",
+      "type" : "video",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/infs3634-178323.appspot.com/o/videos%2FINFS1609%2Fweek%201%2FJava%20Tutorial%20for%20Beginners%20-%201%20-%20Your%20first%20Java%20Program.webm?alt=media&token=bb9e9250-cc05-41ce-9971-5a287444d182"
+    },
+    "INFS3634Week2Quiz1" : {
+      "questions" : [ "INFS1609Week1Quiz1Q1", "INFS1609Week1Quiz1Q2", "INFS1609Week1Quiz1Q3" ],
+      "title" : "Activities Part 1",
+      "type" : "quiz"
+    },
+    "INFS3634Week2Quiz2" : {
+      "questions" : [ "INFS1609Week1Quiz1Q1", "INFS1609Week1Quiz1Q2", "INFS1609Week1Quiz1Q3" ],
+      "title" : "Activities Part 2",
+      "type" : "quiz"
+    },
+    "INFS3634Week2Video1" : {
+      "description" : "This video is Part 1 on Activities",
+      "title" : "Activities Part 1",
+      "type" : "video",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/infs3634-178323.appspot.com/o/videos%2FINFS1609%2Fweek%201%2FJava%20Tutorial%20for%20Beginners%20-%201%20-%20Your%20first%20Java%20Program.webm?alt=media&token=bb9e9250-cc05-41ce-9971-5a287444d182"
+    },
+    "INFS3634Week2Video2" : {
+      "description" : "This video is Part 2 on Activities",
+      "title" : "Activities Part 2",
+      "type" : "video",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/infs3634-178323.appspot.com/o/videos%2FINFS1609%2Fweek%201%2FJava%20Tutorial%20for%20Beginners%20-%201%20-%20Your%20first%20Java%20Program.webm?alt=media&token=bb9e9250-cc05-41ce-9971-5a287444d182"
+    },
+    "INFS3634Week3Quiz1" : {
+      "questions" : [ "INFS1609Week1Quiz1Q1", "INFS1609Week1Quiz1Q2", "INFS1609Week1Quiz1Q3" ],
+      "title" : "Intents",
+      "type" : "quiz"
+    },
+    "INFS3634Week3Video1" : {
+      "description" : "This video is about Intents",
+      "title" : "Intents",
+      "type" : "video",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/infs3634-178323.appspot.com/o/videos%2FINFS1609%2Fweek%201%2FJava%20Tutorial%20for%20Beginners%20-%201%20-%20Your%20first%20Java%20Program.webm?alt=media&token=bb9e9250-cc05-41ce-9971-5a287444d182"
+    },
+    "INFS3634Week4Quiz1" : {
+      "questions" : [ "INFS1609Week1Quiz1Q1", "INFS1609Week1Quiz1Q2", "INFS1609Week1Quiz1Q3" ],
+      "title" : "JSON and HTTP Networking",
+      "type" : "quiz"
+    },
+    "INFS3634Week4Video1" : {
+      "description" : "This video is about JSON and HTTP Networking",
+      "title" : "JSON and HTTP Networking",
+      "type" : "video",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/infs3634-178323.appspot.com/o/videos%2FINFS1609%2Fweek%201%2FJava%20Tutorial%20for%20Beginners%20-%201%20-%20Your%20first%20Java%20Program.webm?alt=media&token=bb9e9250-cc05-41ce-9971-5a287444d182"
+    },
+    "INFS3634Week5Quiz1" : {
+      "questions" : [ "INFS1609Week1Quiz1Q1", "INFS1609Week1Quiz1Q2", "INFS1609Week1Quiz1Q3" ],
+      "title" : "SQLite",
+      "type" : "quiz"
+    },
+    "INFS3634Week5Video1" : {
+      "description" : "This video is about SQLite",
+      "title" : "SQLite",
+      "type" : "video",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/infs3634-178323.appspot.com/o/videos%2FINFS1609%2Fweek%201%2FJava%20Tutorial%20for%20Beginners%20-%201%20-%20Your%20first%20Java%20Program.webm?alt=media&token=bb9e9250-cc05-41ce-9971-5a287444d182"
+    },
+    "INFS3634Week6Quiz1" : {
+      "questions" : [ "INFS1609Week1Quiz1Q1", "INFS1609Week1Quiz1Q2", "INFS1609Week1Quiz1Q3" ],
+      "title" : "Content Providers",
+      "type" : "quiz"
+    },
+    "INFS3634Week6Video1" : {
+      "description" : "This video is about Content Providers",
+      "title" : "Content Providers",
+      "type" : "video",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/infs3634-178323.appspot.com/o/videos%2FINFS1609%2Fweek%201%2FJava%20Tutorial%20for%20Beginners%20-%201%20-%20Your%20first%20Java%20Program.webm?alt=media&token=bb9e9250-cc05-41ce-9971-5a287444d182"
+    }
+  },
+  "courses" : {
+    "INFS1609" : {
+      "lessons" : [ "INFS1609Week1", "INFS1609Week2", "INFS1609Week3", "INFS1609Week4", "INFS1609Week5", "INFS1609Week6", "INFS1609Week7" ],
+      "name" : "Fundamental Programming"
+    },
+    "INFS2605" : {
+      "lessons" : [ "INFS2605Week1", "INFS2605Week2", "INFS2605Week3", "INFS2605Week4", "INFS2605Week5", "INFS2605Week6", "INFS2605Week7" ],
+      "name" : "Intermediate Programming"
+    },
+    "INFS3634" : {
+      "lessons" : [ "INFS3634Week1", "INFS3634Week2", "INFS3634Week3", "INFS3634Week4", "INFS3634Week5", "INFS3634Week6" ],
+      "name" : "Android Development"
+    }
+  },
+  "lessons" : {
+    "INFS1609Week1" : {
+      "activities" : [ "INFS1609Week1Video1", "INFS1609Week1Quiz1", "INFS1609Week1Video2", "INFS1609Week1Quiz2" ],
+      "details" : "This lesson is an introduction to Java",
+      "name" : "Introduction to Java",
+      "weekNo" : "1"
+    },
+    "INFS1609Week2" : {
+      "activities" : [ "INFS1609Week2Video1", "INFS1609Week2Quiz1", "INFS1609Week2Video2", "INFS1609Week2Quiz2" ],
+      "details" : "This lesson is about Elementary Programming",
+      "name" : "Elementary Programming",
+      "weekNo" : "2"
+    },
+    "INFS1609Week3" : {
+      "activities" : [ "INFS1609Week3Video1", "INFS1609Week3Quiz1", "INFS1609Week3Video2", "INFS1609Week3Quiz2" ],
+      "details" : "This lesson is about Selections",
+      "name" : "Selections",
+      "weekNo" : "3"
+    },
+    "INFS1609Week4" : {
+      "activities" : [ "INFS1609Week4Video1", "INFS1609Week4Quiz1", "INFS1609Week4Video2", "INFS1609Week4Quiz2" ],
+      "details" : "This lesson is about Loops",
+      "name" : "Loops",
+      "weekNo" : "4"
+    },
+    "INFS1609Week5" : {
+      "activities" : [ "INFS1609Week5Video1", "INFS1609Week5Quiz1" ],
+      "details" : "This lesson is about is about Methods",
+      "name" : "Methods",
+      "weekNo" : "5"
+    },
+    "INFS1609Week6" : {
+      "activities" : [ "INFS1609Week6Video1", "INFS1609Week6Quiz1", "INFS1609Week6Video2", "INFS1609Week6Quiz2" ],
+      "details" : "This lesson is about Arrays",
+      "name" : "Arrays",
+      "weekNo" : "6"
+    },
+    "INFS1609Week7" : {
+      "activities" : [ "INFS1609Week7Video1", "INFS1609Week7Quiz1" ],
+      "details" : "This lesson is about Objects",
+      "name" : "Objects",
+      "weekNo" : "7"
+    },
+    "INFS2605Week1" : {
+      "activities" : [ "INFS2605Week1Video1", "INFS2605Week1Quiz1" ],
+      "details" : "This lesson is about Java Fundamentals",
+      "name" : "Java Fundamentals",
+      "weekNo" : "1"
+    },
+    "INFS2605Week2" : {
+      "activities" : [ "INFS2605Week2Video1", "INFS2605Week2Quiz1", "INFS2605Week2Video2", "INFS2605Week2Quiz2" ],
+      "details" : "This lesson is about inheritance and abstract classes",
+      "name" : "Inheritance & Abstract Classes",
+      "weekNo" : "2"
+    },
+    "INFS2605Week3" : {
+      "activities" : [ "INFS2605Week3Video1", "INFS2605Week3Quiz1", "INFS2605Week3Video2", "INFS2605Week3Quiz2" ],
+      "details" : "This lesson is about polymorphism and interfaces",
+      "name" : "Polymorphism and Interfaces",
+      "weekNo" : "3"
+    },
+    "INFS2605Week4" : {
+      "activities" : [ "INFS2605Week4Video1", "INFS2605Week4Quiz1" ],
+      "details" : "This lesson is about JavaFX",
+      "name" : "JavaFX",
+      "weekNo" : "4"
+    },
+    "INFS2605Week5" : {
+      "activities" : [ "INFS2605Week5Video1", "INFS2605Week5Quiz1" ],
+      "details" : "This lesson is about event-driven programming",
+      "name" : "Event-driven Programming",
+      "weekNo" : "5"
+    },
+    "INFS2605Week6" : {
+      "activities" : [ "INFS2605Week6Video1", "INFS2605Week6Quiz1" ],
+      "details" : "This lesson is about databases",
+      "name" : "Database",
+      "weekNo" : "6"
+    },
+    "INFS2605Week7" : {
+      "activities" : [ "INFS2605Week7Video1", "INFS2605Week7Quiz1" ],
+      "details" : "This lesson is about HCI",
+      "name" : "HCI",
+      "weekNo" : "7"
+    },
+    "INFS3634Week1" : {
+      "activities" : [ "INFS3634Week1Video1", "INFS3634Week1Quiz1" ],
+      "details" : "This lesson is about Android fundamentals",
+      "name" : "Android Fundamentals",
+      "weekNo" : "1"
+    },
+    "INFS3634Week2" : {
+      "activities" : [ "INFS3634Week2Video1", "INFS3634Week2Quiz1", "INFS3634Week2Video2", "INFS3634Week2Quiz2" ],
+      "details" : "This lesson is about activities",
+      "name" : "Activities",
+      "weekNo" : "2"
+    },
+    "INFS3634Week3" : {
+      "activities" : [ "INFS3634Week3Video1", "INFS3634Week3Quiz1" ],
+      "details" : "This lesson is about intents",
+      "name" : "Intents",
+      "weekNo" : "3"
+    },
+    "INFS3634Week4" : {
+      "activities" : [ "INFS3634Week4Video1", "INFS3634Week4Quiz1" ],
+      "details" : "This lesson is about JSON and HTTP networking",
+      "name" : "JSON and HTTP Networking",
+      "weekNo" : "4"
+    },
+    "INFS3634Week5" : {
+      "activities" : [ "INFS3634Week5Video1", "INFS3634Week5Quiz1" ],
+      "details" : "This lesson is about SQLite",
+      "name" : "SQLite",
+      "weekNo" : "5"
+    },
+    "INFS3634Week6" : {
+      "activities" : [ "INFS3634Week6Video1", "INFS3634Week6Quiz1" ],
+      "details" : "This lesson is about content providers",
+      "name" : "Content Providers",
+      "weekNo" : "6"
+    }
+  },
+  "questions" : {
+    "INFS1609Week1Quiz1Q1" : {
+      "answer" : 1,
+      "options" : [ "Java Virtual Manager", "Java Virtual Machine", "java virtual master", "java virtual magic" ],
+      "question" : "What does JVM stand for?"
+    },
+    "INFS1609Week1Quiz1Q2" : {
+      "answer" : 2,
+      "options" : [ "object", "class", "block", "data" ],
+      "question" : "Code that is encapsulated by curly braces is known as what?"
+    },
+    "INFS1609Week1Quiz1Q3" : {
+      "answer" : 3,
+      "options" : [ "translates byte code to java code", "executes a java program", "compiles java code into a file", "translates java code to java byte code" ],
+      "question" : "What does the Java compiler do?"
+    },
+    "INFS1609Week1Quiz2Q1" : {
+      "answer" : 3,
+      "options" : [ "missing braces", "missing semicolons", "missing quotation marks", "all of the above" ],
+      "question" : "Which of the following is a common syntax mistake?"
+    },
+    "INFS1609Week1Quiz2Q2" : {
+      "answer" : 1,
+      "options" : [ "java compiled file", "class file", "bytecode file", "java virtual file" ],
+      "question" : "What file type does the Java compiler produce when compiling a java program?"
+    },
+    "INFS1609Week1Quiz2Q3" : {
+      "answer" : 3,
+      "options" : [ "translates byte code to java code", "executes a java program", "compiles java code into a file", "translates java code to java byte code" ],
+      "question" : "What does the Java compiler do?"
+    },
+    "INFS1609Week1Quiz2Q4" : {
+      "answer" : 0,
+      "options" : [ "int", "String", "double", "BigInteger" ],
+      "question" : "Which keyword do you use to declare a variable of the Integer data type?"
+    },
+    "INFS1609Week1Quiz2Q5" : {
+      "answer" : 0,
+      "options" : [ "int", "String", "double", "BigInteger" ],
+      "question" : "Which keyword do you use to declare a variable of the Integer data type?"
+    },
+    "INFS1609Week2Quiz1Q1" : {
+      "answer" : 1,
+      "options" : [ "Java Virtual Manager", "Java Virtual Machine", "java virtual master", "java virtual magic" ],
+      "question" : "What does JVM stand for?"
+    },
+    "INFS1609Week2Quiz1Q2" : {
+      "answer" : 2,
+      "options" : [ "object", "class", "block", "data" ],
+      "question" : "Code that is encapsulated by curly braces is known as what?"
+    },
+    "INFS1609Week2Quiz1Q3" : {
+      "answer" : 3,
+      "options" : [ "translates byte code to java code", "executes a java program", "compiles java code into a file", "translates java code to java byte code" ],
+      "question" : "What does the Java compiler do?"
+    },
+    "INFS1609Week2Quiz2Q1" : {
+      "answer" : 3,
+      "options" : [ "missing braces", "missing semicolons", "missing quotation marks", "all of the above" ],
+      "question" : "Which of the following is a common syntax mistake?"
+    },
+    "INFS1609Week2Quiz2Q2" : {
+      "answer" : 1,
+      "options" : [ "java compiled file", "class file", "bytecode file", "java virtual file" ],
+      "question" : "What file type does the Java compiler produce when compiling a java program?"
+    },
+    "INFS1609Week2Quiz2Q3" : {
+      "answer" : 3,
+      "options" : [ "translates byte code to java code", "executes a java program", "compiles java code into a file", "translates java code to java byte code" ],
+      "question" : "What does the Java compiler do?"
+    },
+    "INFS1609Week2Quiz2Q4" : {
+      "answer" : 0,
+      "options" : [ "int", "String", "double", "BigInteger" ],
+      "question" : "Which keyword do you use to declare a variable of the Integer data type?"
+    },
+    "INFS1609Week2Quiz2Q5" : {
+      "answer" : 0,
+      "options" : [ "int", "String", "double", "BigInteger" ],
+      "question" : "Which keyword do you use to declare a variable of the Integer data type?"
+    },
+    "INFS2605Week1Quiz1Q1" : {
+      "answer" : 0,
+      "options" : [ "int", "String", "double", "BigInteger" ],
+      "question" : "Which keyword do you use to declare a variable of the Integer data type?"
+    },
+    "INFS2605Week1Quiz1Q2" : {
+      "answer" : 0,
+      "options" : [ "int", "String", "double", "BigInteger" ],
+      "question" : "Which keyword do you use to declare a variable of the Integer data type?"
+    },
+    "INFS2605Week1Quiz1Q3" : {
+      "answer" : 0,
+      "options" : [ "int", "String", "double", "BigInteger" ],
+      "question" : "Which keyword do you use to declare a variable of the Integer data type?"
+    },
+    "INFS3634Week1Quiz1Q1" : {
+      "answer" : 0,
+      "options" : [ "int", "String", "double", "BigInteger" ],
+      "question" : "Which keyword do you use to declare a variable of the Integer data type?"
+    },
+    "INFS3634Week1Quiz1Q2" : {
+      "answer" : 0,
+      "options" : [ "int", "String", "double", "BigInteger" ],
+      "question" : "Which keyword do you use to declare a variable of the Integer data type?"
+    },
+    "INFS3634Week1Quiz1Q3" : {
+      "answer" : 0,
+      "options" : [ "int", "String", "double", "BigInteger" ],
+      "question" : "Which keyword do you use to declare a variable of the Integer data type?"
+    }
+  },
+  "users" : {
+    "z5077751" : {
+      "firstName" : "Pakin",
+      "lastName" : "Lertthamanon"
+    },
+    "z5088057" : {
+      "completedWeeks" : {
+        "INFS1609Week1" : "true"
+      },
+      "firstName" : "Andy",
+      "lastName" : "Tang"
+    }
+  }
+}

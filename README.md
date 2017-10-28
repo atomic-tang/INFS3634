@@ -14,7 +14,7 @@ We’ve created a quiz application to better prepare IS students for INFS3634 by
 
 ### How to use application ###
 #### Step 1 ####
-To login, enter your unsw zmail (zid@ad.unsw.edu.au or zid@unsw.edu.au) and any password that you like e.g. password.
+To login, enter your unsw zmail (zid@ad.unsw.edu.au or zid@unsw.edu.au) and any password (longer than 8 characters) that you like e.g. password.
 
 #### Step 2 ####
 If you are logging in for the first time, an account will be automatically created with your credentials. A user setup page will appear where you can enter your first and last name and select a profile picture from the google photos library or gallery app. You may also choose to not upload a profile picture and be given an icon avatar as default.
